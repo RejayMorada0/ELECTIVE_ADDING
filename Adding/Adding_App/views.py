@@ -9,5 +9,6 @@ from django.http import HttpResponse
 #def index (request):
 #    return HttpResponse( "Welcome to Web Development 2")
 
-def index(request):#login student
+#Login Page
+def index(request):
     return render(request, 'Adding_Of_Sub/index.html')
