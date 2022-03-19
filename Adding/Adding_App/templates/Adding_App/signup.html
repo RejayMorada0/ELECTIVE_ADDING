@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +33,7 @@
         <h1 class="create">SIGN UP YOUR ACCOUNT</h1>
         <h1 class="manage">To manage your subjects and schedule all in one place</h1>
         <form method="post">
+            {% csrf_token %}
             <div class="formGroup1">
                 <div class="form-group1">
                     <input type="text" class="form-control" name="fn" id="firstname" aria-describedby="emailHelp" placeholder="First name" required>
@@ -71,7 +73,7 @@
 
             <input class="signup" type="submit" value="Sign Up">
 
-            <h2 class="loginlabel">Already have an account? <a class="loginlabel" href="index.php">LOG IN</a> here.</h2>
+            <h2 class="loginlabel">Already have an account? <a class="loginlabel" href="{%url 'Adding_App:index'%}">LOG IN</a> here.</h2>
         </form>
         <input type="image" src="" alt="">
 
