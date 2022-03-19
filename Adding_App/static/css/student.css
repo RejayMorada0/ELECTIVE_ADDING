@@ -1,0 +1,400 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css");
+* {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/*NAVBAR*/
+
+a {
+    color: black;
+}
+
+a:focus {
+    font-weight: bold;
+}
+
+#tupcnav {
+    top: 0;
+    position: sticky;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: white;
+    z-index: 100;
+}
+
+#tupcnav img {
+    margin-right: 15px;
+}
+
+#tupcnav img:hover {
+    margin-right: 15px;
+}
+
+#tupcnav .navbar-brand {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#tupcnav i {
+    font-size: 35px;
+    color: #E2435E;
+    width: 50px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 5px;
+    display: none;
+}
+
+#tupcnav i:hover {
+    color: white;
+    background-color: #E2435E;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#logoutbutton {
+    color: #ffffff;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: #E2435E;
+}
+
+#logoutbutton:hover {
+    border: 1px solid #E2435E;
+    color: #E2435E;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+#logoutbutton1 {
+    display: none;
+    color: #ffffff;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: #E2435E;
+}
+
+#logoutbutton1:hover {
+    border: 1px solid #E2435E;
+    color: #E2435E;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+
+/*SECTION*/
+
+section {
+    min-height: 10vh;
+    width: 100%;
+    padding: 20px 40px 20px 40px;
+}
+
+.studentinfostatus {
+    display: flex;
+}
+
+.studentinfo {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+    background-color: #E2435E;
+    padding: 20px 20px 20px 20px;
+    color: white;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.studentstatus {
+    margin-left: 5px;
+    padding: 20px 20px 20px 20px;
+    color: #E2435E;
+    border-radius: 10px;
+    border: solid 1px #E2435E;
+    width: 50%;
+}
+
+.info {
+    display: grid;
+}
+
+.data {
+    display: grid;
+}
+
+.statusCenter {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+.statusCenter button {
+    border: 0;
+    border-radius: 0;
+    background: none;
+    -webkit-appearance: none;
+    text-decoration: none;
+    color: #E2435E;
+    font-weight: 300px;
+}
+
+.statusCenter button:hover {
+    color: #ee1a3d;
+    font-weight: 500px;
+}
+
+.subject {
+    display: flex;
+    width: 100%;
+}
+
+.subject p {
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+}
+
+#editGrade {
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: #E2435E;
+}
+
+#myTab {
+    display: flex;
+    color: #E2435E;
+}
+
+.nav-item button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    transition: 0.3s;
+    color: #E2435E;
+}
+
+.nav-item button:hover {
+    color: #E2435E;
+    font-weight: bold;
+}
+
+.nav-item button.active {
+    color: #E2435E;
+    font-weight: bolder;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: #E2435E;
+}
+
+.gradebutton {
+    align-self: center;
+    margin-top: 15px;
+    width: 400px;
+}
+
+.gradebutton input {
+    background-color: #319AE4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #E2435E;
+}
+
+
+/*table*/
+
+.tableborder {
+    padding: 20px 20px 20px 20px;
+    border: solid 1px #DEE2E6;
+    border-radius: 0px 0px 10px 10px;
+    overflow: scroll;
+}
+
+.abc {
+    display: flex;
+}
+
+table {
+    /*border-collapse: collapse;*/
+    width: 100%;
+}
+
+td,
+th {
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 10px;
+    color: black;
+}
+
+td {
+    border: transparent;
+    border-bottom: 1px solid #E2435E;
+    color: black;
+}
+
+tr {
+    height: 12px;
+    color: black;
+}
+
+
+/*subject tables*/
+
+#studentsubjects {
+    border: transparent;
+    border-bottom: 1px solid #DEE2E6;
+    border-radius: 0;
+}
+
+.imgforgrades {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 40px 20px 40px;
+}
+
+.imgforgrades p {
+    font-size: 15px;
+    color: #E2435E;
+    border-color: #E2435E;
+}
+
+.submitbutton {
+    display: grid;
+    justify-content: end;
+}
+
+#submitbtn {
+    background-color: #E2435E;
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    height: 40px;
+    border: none;
+}
+
+#submitbtn:hover {
+    border: 1px solid #E2435E;
+    color: #E2435E;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#section {
+    transition: width .35s ease-in-out;
+}
+
+
+/*CODE PAG LUMIIT SCREEN*/
+
+@media only screen and (max-width: 1000px) {
+    #atech {
+        display: none;
+    }
+    #tupcnav {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    section {
+        width: 100%;
+        padding: 10px 5px 10px 5px;
+    }
+    .studentinfostatus {
+        display: grid;
+    }
+    .studentinfo {
+        width: 100%;
+        border-radius: 10px 10px 0px 0px;
+        margin-right: 0px;
+    }
+    .studentstatus {
+        width: 100%;
+        margin-left: 0px;
+        background-color: #E2435E;
+        border-radius: 0px 0px 10px 10px;
+        color: white;
+    }
+    .statusCenter button {
+        border: 0;
+        border-radius: 0;
+        background: none;
+        -webkit-appearance: none;
+        text-decoration: none;
+        color: white;
+        font-weight: 300px;
+    }
+    .statusCenter button:hover {
+        color: #ee1a3d;
+        font-weight: 500px;
+    }
+    .subject,
+    #myTab {
+        display: grid;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 5%;
+    }
+    .imgforgrades {
+        display: grid;
+        padding: 10px 20px 10px 20px;
+    }
+    #logoutbutton1 {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    #logoutbutton {
+        display: none;
+    }
+    .studentinfostatus ul {
+        width: 100%;
+        margin-top: 10px;
+    }
+    #tupcnav i {
+        display: flex;
+    }
+    td {
+        width: 100px;
+    }
+    #studentsubjects {
+        width: 500px;
+    }
+}
+
+
+/*CODE HABANG MALAKI PA YUNG SCREEN*/
+
+@media only screen and (min-width:1000px) {
+    #navbarToggleExternalContent {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

@@ -1,0 +1,250 @@
+* {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/*NAVBAR*/
+
+.nav-link {
+    margin-right: 20px;
+    color: black;
+}
+
+a {
+    color: black;
+}
+
+a:focus {
+    font-weight: bold;
+}
+
+#tupcnav {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 40px;
+    padding-right: 40px;
+    position: sticky;
+}
+
+#tupcnav img {
+    margin-right: 15px;
+}
+
+#tupcnav img:hover {
+    margin-right: 15px;
+}
+
+#tupcnav .navbar-brand {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#logoutbutton {
+    background-color: black;
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+}
+
+#logoutbutton:hover {
+    border: 1px solid black;
+    color: black;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#allsubjects {
+    font-weight: bold;
+}
+
+
+/*SECTION*/
+
+section {
+    min-height: 80vh;
+    width: 100%;
+    padding: 20px 40px 20px 40px
+}
+
+.welcome {
+    display: flex;
+    justify-content: flex-start;
+    background-color: black;
+    color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+
+.subject {
+    display: flex;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.subject p {
+    width: 50%;
+    height: 100%;
+    font-weight: bold;
+}
+
+.subject .radiobutton {
+    display: flex;
+    justify-self: flex-end;
+    width: 50%;
+    height: 100%;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+.subject .radiobutton .radio1 {
+    margin-right: 5px;
+}
+
+.radio1,
+.radio2 {
+    padding: 5px 40px 5px 40px;
+    border-radius: 10px;
+}
+
+.button1 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.button1 input {
+    background-color: black;
+    color: white;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.button1 input:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+.main {
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 10px;
+    height: 58vh;
+    margin-top: 20px;
+    overflow-y: scroll;
+    padding: 20px 20px 20px 20px;
+    scroll-behavior: smooth;
+}
+
+.offerbttn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    align-self: center;
+    margin-top: 15px;
+    width: 400px;
+}
+
+.offerbttn input {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.offerbttn input:hover {
+    background-color: white;
+    color: black;
+    border: solid 1px black;
+}
+
+
+/*table*/
+
+table {
+    /*border-collapse: collapse;*/
+    width: 100%;
+}
+
+td,
+th {
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+td {
+    border: transparent;
+    border-bottom: 1px solid black;
+}
+
+@media only screen and (max-width:1000px) {
+    #atech {
+        display: none;
+    }
+    #tupcnav {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        padding-left: 10px;
+        padding-right: 10px;
+        position: sticky;
+        top: 0;
+        background-color: white;
+        z-index: 1;
+    }
+    section {
+        min-height: 80vh;
+        width: 100%;
+        padding: 20px 10px 20px 10px;
+    }
+    .welcome {
+        display: flex;
+        justify-content: center;
+        background-color: black;
+        color: white;
+        padding: 20px 20px 20px 20px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+    .subject {
+        display: grid;
+        height: 30px;
+        margin-top: 10px;
+        margin-bottom: 120px;
+    }
+    .subject p {
+        width: 100%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .subject .radiobutton {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+    }
+    .button1 {
+        justify-content: center;
+    }
+    .main {
+        padding: 20px 0px 20px 0px;
+    }
+}
+
+@media only screen and (min-width:1000px) {
+    #navbarToggleExternalContent {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

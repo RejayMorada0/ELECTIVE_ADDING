@@ -1,0 +1,175 @@
+* {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-link {
+    margin-right: 20px;
+    color: black;
+}
+
+a {
+    color: black;
+}
+
+a:focus {
+    font-weight: bold;
+}
+
+#requests {
+    font-weight: bold;
+}
+
+#tupcnav {
+    top: 0;
+    position: sticky;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: white;
+    z-index: 100;
+}
+
+#tupcnav img {
+    margin-right: 15px;
+}
+
+#tupcnav img:hover {
+    margin-right: 15px;
+}
+
+#tupcnav .navbar-brand {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#logoutbutton {
+    background-color: #319AE4;
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+}
+
+#logoutbutton:hover {
+    border: 1px solid #319AE4;
+    color: black;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+section {
+    min-height: 80vh;
+    width: 100%;
+    padding: 20px 40px 20px 40px
+}
+
+.welcome {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #319AE4;
+    color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.requesttxt {
+    display: grid;
+}
+
+.requesttxt p {
+    padding-top: 2%;
+    height: 100%;
+    font-weight: bold;
+}
+
+
+/*table*/
+
+.tableborder {
+    border: solid 1px #319AE4;
+    border-radius: 10px;
+    padding: 20px 20px 20px 20px;
+    overflow-x: scroll;
+}
+
+table {
+    width: 100%;
+    border-spacing: 15px 15px;
+}
+
+th,
+td {
+    text-align: left;
+    height: 50px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #319AE4;
+    color: white;
+}
+
+td {
+    border: #319AE4 1px solid;
+}
+
+tr:hover {
+    background-color: hsl(205, 77%, 54%, 50%);
+    color: white;
+}
+
+table a:hover {
+    color: white;
+    font-weight: bold;
+}
+
+@media only screen and (max-width:1000px) {
+    #atech {
+        display: none;
+    }
+    #tupcnav {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    section {
+        min-height: 80vh;
+        width: 100%;
+        padding: 20px 10px 20px 10px
+    }
+    .welcome {
+        display: flex;
+        justify-content: center;
+        background-color: #319AE4;
+        color: white;
+        padding: 20px 20px 20px 20px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+    .requesttxt {
+        display: grid;
+        height: 30px;
+        margin-top: 10px;
+        margin-bottom: 120px;
+    }
+    .requesttxt p {
+        width: 100%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media only screen and (min-width:1000px) {
+    #navbarToggleExternalContent {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

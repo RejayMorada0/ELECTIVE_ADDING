@@ -1,0 +1,344 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css");
+* {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-link {
+    margin-right: 20px;
+    color: black;
+}
+
+a {
+    color: black;
+}
+
+a:focus {
+    font-weight: bold;
+}
+
+#tupcnav {
+    display: flex;
+    top: 0;
+    position: sticky;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: white;
+    z-index: 100;
+}
+
+#tupcnav img {
+    margin-right: 15px;
+}
+
+#tupcnav img:hover {
+    margin-right: 15px;
+}
+
+#tupcnav .navbar-brand {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#cancelbutton1 {
+    display: none;
+}
+
+#cancelbutton {
+    background-color: #319AE4;
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+}
+
+#cancelbutton:hover {
+    border: 1px solid #319AE4;
+    color: black;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+section {
+    width: 100%;
+    padding: 20px 40px 20px 40px;
+}
+
+.offered {
+    display: grid;
+    background-color: #319AE4;
+    padding: 20px 20px 20px 20px;
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.offered p {
+    font-weight: bold;
+}
+
+.offered label {
+    padding-left: 2%;
+}
+
+.form-row {
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.remarkbttn {
+    align-self: center;
+    margin-top: 15px;
+    width: 400px;
+}
+
+.remarkbttn button {
+    background-color: #319AE4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.grades {
+    margin-top: 5%;
+    display: flex;
+    height: 30px;
+}
+
+.grades p {
+    width: 100%;
+    font-weight: bold;
+}
+
+#myTab {
+    display: flex;
+    color: #319AE4;
+}
+
+.nav-item button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    transition: 0.3s;
+    color: #319AE4;
+}
+
+.nav-item button:hover {
+    color: #319AE4;
+    font-weight: bold;
+}
+
+.nav-item button.active {
+    color: #319AE4;
+    font-weight: bolder;
+}
+
+
+/*table*/
+
+.tableborder {
+    padding: 20px 20px 20px 20px;
+    border: solid 1px #DEE2E6;
+    border-radius: 0px 0px 10px 10px;
+    overflow: scroll;
+}
+
+table {
+    /*border-collapse: collapse;*/
+    width: 100%;
+}
+
+td,
+th {
+    text-align: left;
+}
+
+td {
+    border: transparent;
+    border: solid 1px #319AE4;
+}
+
+.imgforgrades {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 40px 20px 40px;
+}
+
+.imgforgrades p,
+a {
+    font-size: 15px;
+    color: #319AE4;
+    border-color: #319AE4;
+}
+
+a {
+    color: black;
+}
+
+.submitbutton {
+    display: grid;
+    justify-content: end;
+}
+
+#submitbtn {
+    background-color: #319AE4;
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    height: 40px;
+    border: none;
+}
+
+#submitbtn:hover {
+    border: 1px solid black;
+    color: black;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.imgforgrades {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 40px 20px 40px;
+}
+
+.imgforgrades p {
+    font-size: 15px;
+    color: #319AE4;
+    border-color: #319AE4;
+}
+
+.submitbutton {
+    display: grid;
+    justify-content: end;
+}
+
+#submitbtn {
+    background-color: #319AE4;
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    height: 40px;
+    border: none;
+}
+
+#submitbtn:hover {
+    border: 1px solid black;
+    color: black;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+@media only screen and (max-width: 1000px) {
+    #atech {
+        display: none;
+    }
+    #tupcnav {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #cancelbutton {
+        display: none;
+    }
+    #navbarToggleExternalContent #studentname {
+        display: flex;
+        background-color: #319AE4;
+    }
+    section {
+        width: 100%;
+        padding: 20px 10px 20px 10px;
+    }
+    .offered {
+        padding: 0 0 0 0;
+        border-radius: 0 0 0 0;
+        margin-right: 0px;
+    }
+    #offered {
+        background-color: #319AE4;
+        width: 100%;
+        top: 70px;
+        position: sticky;
+        z-index: 10;
+    }
+    #cancelbutton {
+        display: none;
+    }
+    #cancelbutton1 {
+        display: flex;
+        border: solid 1px white;
+        justify-content: center;
+        border-radius: 10px;
+    }
+    #offered a {
+        background-color: #319AE4;
+        color: white;
+        text-decoration: none;
+        padding: 10px 10px 10px 10px;
+    }
+    #offered a:hover {
+        background-color: white;
+        color: #319AE4;
+        border: solid 1px #2272ac;
+    }
+    .offered p {
+        justify-self: center;
+    }
+    .bi-journal {
+        display: flex;
+        font-size: 35px;
+        color: #319AE4;
+        width: 50px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        border-radius: 5px;
+    }
+    .bi-journal:hover {
+        color: white;
+        background-color: #319AE4;
+        cursor: pointer;
+        padding: 5px;
+    }
+    .grades,
+    #myTab {
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 5%;
+    }
+    .imgforgrades {
+        display: grid;
+        padding: 10px 20px 10px 20px;
+    }
+}
+
+@media only screen and (min-width:1000px) {
+    .bi-journal {
+        display: none;
+    }
+    #cancelnav {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+    #ulid {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

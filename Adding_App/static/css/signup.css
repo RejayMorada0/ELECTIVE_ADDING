@@ -1,0 +1,176 @@
+* {
+    font-family: 'Roboto' serif;
+    padding: 0;
+    margin: 0;
+}
+
+
+/*body*/
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+
+
+/*main*/
+
+main {
+    display: grid;
+    width: 600px;
+    margin: 50px 20px 50px 20px;
+    justify-content: center;
+}
+
+
+/*TUPC LOGO*/
+
+img.mb4 {
+    justify-self: center;
+    margin-bottom: 10px;
+}
+
+
+/*"signup your account"*/
+
+.create {
+    width: 100%;
+    font-weight: bold;
+    font-size: 23px;
+    color: #E2435E;
+}
+
+
+/*"To manage your subjects and schedule all in one place"*/
+
+.manage {
+    width: 100%;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 23px;
+    color: #575757;
+    margin-bottom: 40px;
+}
+
+form {
+    display: grid;
+    width: 100%;
+    row-gap: 10px;
+}
+
+input.signup {
+    width: 100%;
+    height: 59px;
+    background: #E2435E;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.signup:hover {
+    background-color: #9b0511;
+}
+
+.signup:focus {
+    background: #E2435E;
+}
+
+h2.loginlabel {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 23px;
+    color: #000000;
+    justify-self: flex-start;
+}
+
+label {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+a.loginlabel {
+    color: #E2435E;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 23px;
+}
+
+
+/*MEDIA QUERY*/
+
+@media only screen and (max-width:1200px) {
+    h2.loginlabel {
+        justify-self: center;
+    }
+}
+
+
+/*forms*/
+
+
+/*fullname, surname, student number, year and section lagayan nila*/
+
+.formGroup1,
+.formGroup2 {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+
+/*dropdown year and section kasama label*/
+
+.form-group2a {
+    display: grid;
+}
+
+
+/*mga box mismo ng fullname, surname, student number, year and section*/
+
+.form-group1,
+.form-group1a,
+.form-group2,
+.form-group2a {
+    width: 100%;
+}
+
+
+/*pinakaloob ng fullname, surname, student number, year and section*/
+
+.form-group1 input,
+.form-group1a input,
+.form-group2 input,
+.form-group2a select,
+.form-control {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    height: 50px;
+    border: 1px solid #CED4DA;
+    font-weight: 300;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.form-group1 input:focus,
+.form-group1a input:focus,
+.form-group2 input:focus,
+.form-control:focus {
+    box-shadow: none;
+}
+
+
+/*/*dropdown year and section lang*/
+
+.form-group2a select {
+    padding: 0 10px 0 10px;
+}
