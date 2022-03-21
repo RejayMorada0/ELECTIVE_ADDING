@@ -99,64 +99,9 @@
         </div>
 
         <div>
-            <form class="needs-validation" method="post">
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label for="validationTooltip01">Subject Code</label>
-                        <input type="text" name="sub_code" class="form-control" id="validationTooltip01" required>
-
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="validationTooltip02">Select Grade Here</label>
-                        <input type="number" name="grades" class="form-control" id="validationTooltip02" step=0.01 required>
-                    </div>
-
-                    <div class="gradebutton">
-                        <input class="btn btn-primary" type="submit" value="Update Grade" id="updategrade" name="updateAction">
-                    </div>
-            </form>
-            </div>
-
-
-
 
             <form>
                 <div class="tab-content" id="myTabContent">
-
-                    <div class="tableborder">
-                        <table>
-                            <legend>ALL YEAR - ALL SEMESTER</legend>
-                            <thead>
-                                <th>SUBJECT CODE</th>
-                                <th>SUBJECT NAME</th>
-                                <th>GRADES</th>
-                            </thead>
-                            <tbody id="fyfs">
-                                <!-- PHP CODE TO FETCH DATA FROM ROWS-->
-                                <?php   // LOOP TILL END OF DATA 
-                                    while($rows=$display_student_req->fetch_assoc())
-                                    {
-                                ?>
-                                <tr>
-                                    <!--FETCHING DATA FROM EACH 
-                                        ROW OF EVERY COLUMN-->
-                                    <td>
-                                        <?php echo $rows['sub_code'];?>
-                                    </td>
-                                    <td>
-                                        <?php echo $rows['sub_name'];?>
-                                    </td>
-                                    <td>
-                                        <?php echo $rows['grades'];?>
-                                    </td>
-                                </tr>
-                                <?php
-                                    }
-                                ?>
-                            </tbody>
-
-                        </table>
-                    </div>
 
                     <form name="student_grade" method="post">
                         <div class="imgforgrades" hidden>
