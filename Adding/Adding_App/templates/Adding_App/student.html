@@ -31,14 +31,14 @@
 <body onresize="openpage()" id="ajax_func">
     <nav class="navbar navbar-expand-lg" id="tupcnav">
         <img src="../../static/images/tuplogo.png" width="50" height="50" alt="tuplogo">
-        <a class="navbar-brand" href="student.php" id="atech">TECHNOLOGICAL UNIVERSITY <br> OF THE PHILIPPINES</a>
+        <a class="navbar-brand" href="{%url 'Adding_App:student'%}" id="atech">TECHNOLOGICAL UNIVERSITY <br> OF THE PHILIPPINES</a>
 
         <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
 
             <form class="d-flex" id="logoutflex">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../students/logout.php" id="logoutbutton">Logout</a>
+                        <a class="nav-link" href="{%url 'Adding_App:index'%}" id="logoutbutton">Logout</a>
                     </li>
                 </ul>
 
@@ -82,7 +82,7 @@
             </div>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../students/logout.php" id="logoutbutton1">Logout</a>
+                    <a class="nav-link" href="{%url 'Adding_App:index'%}" id="logoutbutton1">Logout</a>
                 </li>
             </ul>
 
