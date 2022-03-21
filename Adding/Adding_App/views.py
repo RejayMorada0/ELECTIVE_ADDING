@@ -22,6 +22,23 @@ def head(request):
 def requestapproval(request):
     return render(request, 'Adding_App/requestapproval.html')
 
+
+#Add Subject
+def add_sub(request):
+    if request.method=='POST':
+        sub_code = request.POST.get('sub_code')
+        sub_name = request.POST.get('sub_name')
+        yr_and_sem = request.POST.get('yr_and_sem')
+        offer_stats = request.POST.get('offer_stats')
+
+        data = all_subjects.objects.create(sub_code = sub_code, sub_name = sub_name, yr_and_sem = yr_and_sem, offer_stats = offer_stats)
+        data.save()
+        return render(request, 'Adding_App/head.html')
+
+
+
+
+
 #pic
 def pic(request):
     return render(request, 'Adding_App/pic.html')
