@@ -32,17 +32,17 @@ class student_request(models.Model):
     sub_code = models.CharField(max_length=100)
     sub_name = models.CharField(max_length=100)
     yr_and_sem = models.CharField(max_length=100)
-    grades = models.CharField(max_length=100)
+    grades = models.FloatField(max_length=100)
     remarks = models.CharField(max_length=100)
 
 
 #Head Access
-class admin_access(models.Model):
+class head_access(models.Model):
     email = models.EmailField(max_length=100)
     passw = models.CharField(max_length=100)
 
 
 #PIC Access
-class admin_access(models.Model):
+class pic_access(models.Model):
     email = models.EmailField(max_length=100)
     passw = models.CharField(max_length=100)
