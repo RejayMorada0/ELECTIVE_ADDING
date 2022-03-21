@@ -4,7 +4,7 @@ import os
 
 # Create your models here.
 
-
+"""
 #All Subjects
 class all_subjects(models.Model):
     sub_code = models.CharField(max_length=100)
@@ -14,5 +14,5 @@ class all_subjects(models.Model):
 
     class Meta:
         db_table = "all_subjects"
-
+"""
 
