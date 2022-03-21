@@ -26,7 +26,7 @@
 
         <nav class="navbar navbar-expand-lg" id="tupcnav">
             <img src="../../static/images/tuplogo.png" width="50" height="50" alt="tuplogo">
-            <a class="navbar-brand" href="pic.php" id="atech">TECHNOLOGICAL UNIVERSITY <br> OF THE PHILIPPINES</a>
+            <a class="navbar-brand" href="{%url 'Adding_App:pic'%}" id="atech">TECHNOLOGICAL UNIVERSITY <br> OF THE PHILIPPINES</a>
 
             <nav class="navbar">
                 <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,13 +40,13 @@
                 <form class="d-flex">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="pic.php" id="requests">Request</a>
+                            <a class="nav-link" href="{%url 'Adding_App:pic'%}" id="requests">Request</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="studentrecords.php" id="studentrecords">Student Records</a>
+                            <a class="nav-link" href="{%url 'Adding_App:studentrecords'%}" id="studentrecords">Student Records</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="logout.php" id="logoutbutton">Logout</a>
+                            <a class="nav-link" href="{%url 'Adding_App:index'%}" id="logoutbutton">Logout</a>
                         </li>
                     </ul>
                 </form>

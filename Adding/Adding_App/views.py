@@ -14,3 +14,24 @@ def index(request):
 #Sign Up
 def signup(request):
     return render(request, 'Adding_App/signup.html')
+
+#Head
+def head(request):
+    return render(request, 'Adding_App/head.html')
+
+def requestapproval(request):
+    return render(request, 'Adding_App/requestapproval.html')
+
+#pic
+def pic(request):
+    return render(request, 'Adding_App/pic.html')
+
+def checking(request):
+    return render(request, 'Adding_App/checking.html')
+
+def studentrecords(request):
+    return render(request, 'Adding_App/studentrecords.html')
+
+#student
+def student(request):
+    return render(request, 'Adding_App/student.html')

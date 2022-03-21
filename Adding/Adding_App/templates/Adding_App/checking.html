@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-lg" id="tupcnav">
         <img src="../../static/images/tuplogo.png" width="50" height="50" alt="tuplogo">
 
-        <a class="navbar-brand" href="pic.php" id="atech">TECHNOLOGICAL UNIVERSITY <br> OF THE PHILIPPINES</a>
+        <a class="navbar-brand" href="{%url 'Adding_App:pic'%}.php" id="atech">TECHNOLOGICAL UNIVERSITY <br> OF THE PHILIPPINES</a>
 
         <form class="d-flex" id="cancelnav">
             <ul class="navbar-nav mr-auto" id="ulid">
@@ -33,7 +33,7 @@
                     <p class="nav-link" id="studentname">STUDENT: email1@gmail.com </p>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cancel.php" id="cancelbutton">Cancel</a>
+                    <a class="nav-link" href="{%url 'Adding_App:pic'%}" id="cancelbutton">Cancel</a>
                 </li>
             </ul>
         </form>
@@ -66,7 +66,7 @@
                     ?>
             </ol>
         </div>
-        <a class="nav-link" href="cancel.php" id="cancelbutton1">Cancel</a>
+        <a class="nav-link" href="c{%url 'Adding_App:pic'%}" id="cancelbutton1">Cancel</a>
     </section>
 
 
