@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
-#from django.http import HttpResponse
+from django.http import HttpResponse
+from all_subjects.models import all_subjects
 
 # Create your views here.
 installed_apps = ['Adding_App']

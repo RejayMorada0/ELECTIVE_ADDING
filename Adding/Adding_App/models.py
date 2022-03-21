@@ -12,4 +12,7 @@ class all_subjects(models.Model):
     yr_and_sem = models.CharField(max_length=100)
     offer_stats = models.CharField(max_length=100)
 
+    class Meta:
+        db_table = "all_subjects"
+
 
