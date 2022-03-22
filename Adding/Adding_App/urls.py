@@ -1,4 +1,6 @@
+from os import name
 from django.urls import path
+from django.conf import settings
 from . import views
 
 app_name = 'Adding_App'
@@ -9,6 +11,9 @@ urlpatterns = [
     #head
     path('head/', views.head, name='head'),
     path('requestapproval/', views.requestapproval, name='requestapproval'),
+    path('Add_Remove_Sub/', views.addAction, name='addAction'),
+    path('Add_Remove_Sub/', views.removeAction, name='removeAction'),
+    path('showAllSub/', views.showAllSub, name='showAllSub'),
     #pic
     path('pic/', views.pic, name='pic'),
     path('checking/', views.checking, name='checking'),

@@ -1,5 +1,11 @@
-from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from .models import all_subjects
+
+from django.contrib.auth.models import User
+from django.contrib.auth.models import User, auth
+from django.contrib.auth import authenticate
+import mysql.connector as sql
 
 
 # Create your views here.
@@ -23,18 +29,32 @@ def head(request):
 def requestapproval(request):
     return render(request, 'Adding_App/requestapproval.html')
 
+#Show All Subjects in Table
+def showAllSub(request):
+    all_subs = all_subjects.objects.all()
+    return render(request, 'Adding_App/head.html',{'all_subs':all_subs}) 
 
 #Add Subject
-def add_sub(request):
+def addAction(request):
     if request.method=='POST':
         sub_code = request.POST.get('sub_code')
         sub_name = request.POST.get('sub_name')
-        yr_and_sem = request.POST.get('yr_and_sem')
-        offer_stats = request.POST.get('offer_stats')
+        year = request.POST.get('year')
+        semester = request.POST.get('semester')
+        #offer_stats = request.POST.get('offer_stats')
 
-        data = all_subjects.objects.create(sub_code = sub_code, sub_name = sub_name, yr_and_sem = yr_and_sem, offer_stats = offer_stats)
+        data = all_subjects.objects.create(sub_code = sub_code, sub_name = sub_name, year = year, semester = semester, offer_stats = "Not Offer")
         data.save()
         return render(request, 'Adding_App/head.html')
+
+#Remove Subject
+def removeAction(request,id):
+    subject = all_subjects.objects.get(id = id)
+    subject.delete()
+    return redirect('/head')
+
+
+
 
 
 
