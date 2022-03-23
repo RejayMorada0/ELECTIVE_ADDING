@@ -57,7 +57,8 @@
         <div class="welcome">WELCOME, DEPARTMENT HEAD!</div>
         <div class="subject">
             <p>SUBJECT OF BACHELOR OF ENGINEERING TECHNOLOGY Major in COMPUTER ENGINEERING TECHNOLOGY </p>
-            <a id="logoutbutton" href="{%url 'Adding_App:addsubject' %}">+</a>
+            <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color:black; background-color: white; border: 1px solid black;">+ add subject</a>
+
         </div>
 
         <div class="main">
@@ -95,30 +96,64 @@
 
 
         <!-- Modal -->
-        <form class="reqsub">
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">OFFERED SUBJECTS</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">ADD SUBJECTS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-                        </div>
-                        <div class="modal-body">
-                            <ol type="1" id="modalBody">
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="msg()" action="/addAction" method="post">
+                            {% csrf_token %}
+                            <legend>Add or Remove Subject</legend>
 
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="sub_code">Subject Code</label>
+                                    <input type="text" class="form-control" name="sub_code" id="sub_code" required>
 
-                            </ol>
-
-                        </div>
-
-
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="sub_name">Subject Name</label>
+                                    <input type="text" class="form-control" name="sub_name" id="sub_name" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="year">Year</label>
+                                    <select class="custom-select" name="year" id="year" required>
+                                      <option selected disabled value="">Choose...</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="semester">Semester</label>
+                                    <select class="custom-select" name="semester" id="semester" required>
+                                      <option selected disabled value="">Choose...</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="button1">
+                                <input class="btn btn-primary" type="submit" value="+ add subject" name="addAction">
+                            </div>
+                        </form>
 
                     </div>
+
+
+
                 </div>
             </div>
-        </form>
+        </div>
+
 
 
 
