@@ -139,8 +139,9 @@
                     <th>SEMESTER</th>
                     <th>OFFERED STATUS</th>
                 </thead>
+
                 <tbody id="allsubtable">
-                    {% for sub in all_subs %}
+                    {% for sub in data %}
                     <tr>
                         <td>{{sub.sub_code}}</td>
                         <td>{{sub.sub_name}}</td>
@@ -148,9 +149,9 @@
                         <td>{{sub.semester}}</td>
                         <td>{{sub.offer_stats}}</td>
                     </tr>
-                    {% endfor %}
-                </tbody>
 
+                </tbody>
+                {% endfor %}
             </table>
 
         </div>

@@ -32,7 +32,7 @@
         <img class="mb4" src="../../static/images/tuplogo.png" alt="tuplogo" width="100" height="100">
         <h1 class="create">SIGN UP YOUR ACCOUNT</h1>
         <h1 class="manage">To manage your subjects and schedule all in one place</h1>
-        <form method="post">
+        <form action="/Register/" method="post">
             {% csrf_token %}
             <div class="formGroup1">
                 <div class="form-group1">
@@ -45,10 +45,10 @@
 
             <div class="formGroup2">
                 <div class="form-group2">
-                    <input type="text" class="form-control" name="stud_id" id="studentno1" aria-describedby="emailHelp" placeholder="TUPC-XX-XXXX" required>
+                    <input type="text" class="form-control" name="stud_id" id="stud_id" aria-describedby="emailHelp" placeholder="TUPC-XX-XXXX" required>
                 </div>
                 <div class="form-group2a">
-                    <select class="custom-select mr-sm-2" name="section" id="section0" required>
+                    <select class="custom-select mr-sm-2" name="section" id="section" required>
                         <option value="BET-COET-S-1A">BET-COET-S-1A</option>
                         <option value="BET-COET-NS-1B">BET-COET-NS-1B</option>
                         <option value="BET-COET-NS-2A">BET-COET-NS-2A</option>
@@ -63,15 +63,15 @@
 
 
             <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email1" aria-describedby="emailHelp" placeholder="juan.delacruz@gsfe.tupcavite.edu.ph" required>
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="juan.delacruz@gsfe.tupcavite.edu.ph" required>
 
             </div>
             <div class="form-group" style="display: grid; row-gap: 10px;">
-                <input type="password" class="form-control" name="passw" id="password1" placeholder="Password" minlength="5" required>
-                <input type="password" class="form-control" name="cpassw" id="confirmpassword" placeholder="Confirm" minlength="5" required>
+                <input type="password" class="form-control" name="passw" id="passw" placeholder="Password" minlength="5" required>
+                <input type="password" class="form-control" name="cpassw" id="cpassw" placeholder="Confirm" minlength="5" required>
             </div>
 
-            <input class="signup" type="submit" value="Sign Up">
+            <input class="signup" type="submit" name="register" value="Sign Up">
 
             <h2 class="loginlabel">Already have an account? <a class="loginlabel" href="{%url 'Adding_App:index'%}">LOG IN</a> here.</h2>
         </form>

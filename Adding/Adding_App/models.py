@@ -28,11 +28,7 @@ class student_accounts(models.Model):
 
     #Function para may TUPC sa unahan 
     #https://stackoverflow.com/questions/52070462/django-generate-custom-id
-    def save(self, **kwargs):
-        if not self.id:
-            max = student_accounts.objects.aggregate(id_max=Max('stud_id'))['id_max']
-            self.stud_id = "{}{:05d}".format('TUPC', max if max is not None else 1)
-        super().save(*kwargs)
+    
     
 
 #Student Request
