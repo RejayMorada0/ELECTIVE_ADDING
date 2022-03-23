@@ -53,7 +53,7 @@
             <p>SUBJECT OF BACHELOR OF ENGINEERING TECHNOLOGY Major in COMPUTER ENGINEERING TECHNOLOGY </p>
 
         </div>
-        <form class="needs-validation" action="Add" method="post">
+        <form onsubmit="msg()" action="/addAction" method="post">
             {% csrf_token %}
             <legend>Add or Remove Subject</legend>
 

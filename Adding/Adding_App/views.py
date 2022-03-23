@@ -51,7 +51,8 @@ def login(request):
         student = tuple(cursor.fetchall())
         if student != ():
             data = student_accounts.objects.filter(email = email)
-            return render(request, 'Adding_App/student.html', {'data':data})
+            #return render(request, 'Adding_App/student.html', {'data':data})
+            return redirect('/student', {'data':data})
         else:
             conn = sql.connect(host = "localhost", user = "root", password = "", database = 'adding_subjects_db')
             cursor = conn.cursor()
@@ -67,9 +68,10 @@ def login(request):
             head = tuple(cursor.fetchall())
             if head != ():
                 data = head_access.objects.filter(email1 = email)
-                return render(request, 'Adding_App/head.html', {'data':data})
+                #return render(request, 'Adding_App/head.html', {'data':data})
+                return redirect('/head', {'data':data})
             else:
-                return render(request, 'Adding_App/index.html')       
+                return redirect('/index')       
 
     return render(request, 'Adding_App/index.html') 
 
@@ -86,18 +88,20 @@ def requestapproval(request):
 
 #Add Subject
 def addsubject(request):
+    return render(request, 'Adding_App/addsubject.html')
+
+def addAction(request):
     if request.method=='POST':
         sub_code = request.POST.get('sub_code')
         sub_name = request.POST.get('sub_name')
         year = request.POST.get('year')
         semester = request.POST.get('semester')
-        #offer_stats = request.POST.get('offer_stats')
 
         data = all_subjects.objects.create(sub_code = sub_code, sub_name = sub_name, year = year, semester = semester, offer_stats = "Not Offer")
         data.save()
-        return render(request, 'Adding_App/add.html')
-        
-    return render(request, 'Adding_App/add.html')
+        return redirect('/head')
+
+    
 
 
 #pic

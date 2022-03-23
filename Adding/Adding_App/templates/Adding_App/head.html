@@ -57,7 +57,7 @@
         <div class="welcome">WELCOME, DEPARTMENT HEAD!</div>
         <div class="subject">
             <p>SUBJECT OF BACHELOR OF ENGINEERING TECHNOLOGY Major in COMPUTER ENGINEERING TECHNOLOGY </p>
-            <a id="logoutbutton" value="+ add subject" href="{%url 'Adding_App:addsubject' %}"></a>
+            <a id="logoutbutton" href="{%url 'Adding_App:addsubject' %}">+</a>
         </div>
 
         <div class="main">
@@ -81,6 +81,10 @@
                         <td>{{item.year}}</td>
                         <td>{{item.semester}}</td>
                         <td>{{item.offer_stats}}</td>
+                        <td>
+                            <a href="">Update</a>
+                            <a href="">Delete</a>
+                        </td>
                     </tr>
 
                 </tbody>
