@@ -79,7 +79,11 @@ section {
 }
 
 .subject {
+    border: solid 1px black;
+    background-color: aqua;
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     height: 30px;
     margin-top: 10px;
     margin-bottom: 30px;
