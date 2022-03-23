@@ -95,15 +95,18 @@ def addAction(request):
 
 #Remove Subject
 def removeAction(request,id):
-    subject = all_subjects.objects.get(id = id)
-    subject.delete()
+    data = all_subjects.objects.get(id = id)
+    data.delete()
     return redirect('/head')
 
 
 #Show All Subjects in Table
 def showAllSub(request):
-    all_subs = all_subjects.objects.all()
-    return render(request, 'Adding_App/head.html',{'all_subs':all_subs,}) 
+    data = all_subjects.objects.all()
+    context={
+    'data': data
+    }
+    return render(request, 'Adding_App/head.html',context) 
 
 
 

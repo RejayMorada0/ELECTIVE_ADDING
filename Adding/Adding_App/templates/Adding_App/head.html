@@ -141,13 +141,13 @@
                 </thead>
 
                 <tbody id="allsubtable">
-                    {% for sub in data %}
+                    {% for item in data %}
                     <tr>
-                        <td>{{sub.sub_code}}</td>
-                        <td>{{sub.sub_name}}</td>
-                        <td>{{sub.year}}</td>
-                        <td>{{sub.semester}}</td>
-                        <td>{{sub.offer_stats}}</td>
+                        <td>{{item.sub_code}}</td>
+                        <td>{{item.sub_name}}</td>
+                        <td>{{item.year}}</td>
+                        <td>{{item.semester}}</td>
+                        <td>{{item.offer_stats}}</td>
                     </tr>
 
                 </tbody>
