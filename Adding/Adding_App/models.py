@@ -7,7 +7,7 @@ import os
 
 #All Subjects
 class all_subjects(models.Model):
-    sub_code = models.CharField(max_length=100, primary_key=True)
+    sub_code = models.CharField(max_length=100, unique=True)
     sub_name = models.CharField(max_length=100)
     year = models.PositiveIntegerField()
     semester = models.PositiveIntegerField()

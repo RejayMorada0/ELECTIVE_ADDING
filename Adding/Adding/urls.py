@@ -20,5 +20,6 @@ from Adding_App import views
 urlpatterns = [
     path('', include('Adding_App.urls')),
     path('admin/', admin.site.urls),
+    
    
 ]

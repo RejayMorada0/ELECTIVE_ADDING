@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELETE</title>
+</head>
+
+<body>
+    <form method="post" onsubmit="msg()" action="/destroy/{{data.id}}">
+        {% csrf_token %}
+        <legend>Add or Remove Subject</legend>
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="sub_code">Subject Code</label>
+                <input type="text" class="form-control" name="sub_code" id="sub_code" value="{{data.sub_code}}" required>
+
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="sub_name">Subject Name</label>
+                <input type="text" class="form-control" name="sub_name" id="sub_name" value="{{data.sub_name}}" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="year">Year</label>
+                <select class="custom-select" name="year" id="year" required>
+                  <option value="{{data.year}}">{{data.year}}</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="semester">Semester</label>
+                <select class="custom-select" name="semester" id="semester" required>
+                  <option value="{{data.semester}}">{{data.semester}}</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="offer_stats">Offer Status</label>
+                <select class="custom-select" name="offer_stats" id="offer_stats" value="{{data.offer_stats}}" required>
+                  <option value="{{data.offer_stats}}" >{{data.offer_stats}}</option>
+                  <option value="Offer">Offer</option>
+                  <option value="Not Offer">Not Offer</option>
+                </select>
+            </div>
+        </div>
+        <div class="button1">
+            <p>Are you sure you want to delete?</p>
+            <button>Submit</button>
+        </div>
+    </form>
+</body>
+
+</html>

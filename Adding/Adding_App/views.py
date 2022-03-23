@@ -96,32 +96,33 @@ def addAction(request):
         sub_name = request.POST.get('sub_name')
         year = request.POST.get('year')
         semester = request.POST.get('semester')
+        offer_stats = request.POST.get('offer_stats')
 
-        data = all_subjects.objects.create(sub_code = sub_code, sub_name = sub_name, year = year, semester = semester, offer_stats = "Not Offer")
+        data = all_subjects.objects.create(sub_code = sub_code, sub_name = sub_name, year = year, semester = semester, offer_stats = offer_stats)
         data.save()
         return redirect('/head')
 
-def edit(request,sub_code):
-    data = all_subjects.objects.get(sub_code=sub_code)
-    context = {'data': data}
-    return render(request, 'Adding_App/head.html',context) 
+def edit(request,id):
+    data = all_subjects.objects.get(id=id)
+    return render(request, 'Adding_App/edit.html', {'data':data})
 
-def destroy(request,sub_code):
-    data = all_subjects.objects.get(sub_code=sub_code)
+def delete(request,id):
+    data = all_subjects.objects.get(id=id)
+    return render(request, 'Adding_App/delete.html', {'data':data})
+
+def destroy(request,id):
+    data = all_subjects.objects.get(id=id)
     data.delete()
-    return redirect("Adding_App/head.html")
+    return redirect("/head/")
     
-"""
-def updateAction(request):
-    subject = all_subjects.objects.get(sub_code=sub_code)
-    subject.sub_code = request.POST.get('sub_code')
-    subject.sub_name = request.POST.get('sub_name')
-    subject.year = request.POST.get('year')
-    subject.semester = request.POST.get('semester')
-    subject.save()
-    return redirect('/head')
-
-"""   
+def update(request,id):
+    data = all_subjects.objects.get(id=id)
+    data.sub_code = request.POST.get('sub_code')
+    data.sub_name = request.POST.get('sub_name')
+    data.year = request.POST.get('year')
+    data.semester = request.POST.get('semester')
+    data.save()
+    return redirect('/head') 
 
 
 #pic

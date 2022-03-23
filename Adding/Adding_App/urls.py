@@ -1,5 +1,5 @@
 from os import name
-from django.urls import path
+from django.urls import path, re_path
 from django.conf import settings
 from . import views
 
@@ -15,8 +15,11 @@ urlpatterns = [
     path('head/', views.head, name='head'),
     path('addsubject/', views.addsubject, name='addsubject'),
     path('addAction', views.addAction, name='addAction'),
-    path('edit/<str:sub_code>', views.edit),
-    path('delete/<str:sub_code>', views.destroy),
+    path('edit/<int:id>', views.edit),
+    path('delete/<int:id>', views.delete),
+    path('update/<int:id>', views.update),
+    path('destroy/<int:id>', views.destroy),
+    #re_path(r'^delete/(?P<pk>[0-9]+)/$', views.destroy),
     path('requestapproval/', views.requestapproval, name='requestapproval'),
     #pic
     path('pic/', views.pic, name='pic'),

@@ -75,21 +75,20 @@
                 </thead>
 
                 <tbody id="allsubtable">
-                    {% for item in data %}
+                    {% for data in data %}
                     <tr>
-                        <td>{{item.sub_code}}</td>
-                        <td>{{item.sub_name}}</td>
-                        <td>{{item.year}}</td>
-                        <td>{{item.semester}}</td>
-                        <td>{{item.offer_stats}}</td>
+                        <td>{{data.sub_code}}</td>
+                        <td>{{data.sub_name}}</td>
+                        <td>{{data.year}}</td>
+                        <td>{{data.semester}}</td>
+                        <td>{{data.offer_stats}}</td>
                         <td>
-                            <a href="/edit/{{item.sub_code}}">Edit</a>
-                            <a href="/edit/{{item.sub_code}}">Delete</a>
+                            <a href="/edit/{{data.id}}">Edit</a>
+                            <a href="/delete/{{data.id}}">Delete</a>
                         </td>
                     </tr>
-
+                    {% endfor %}
                 </tbody>
-                {% endfor %}
             </table>
 
         </div>
@@ -108,8 +107,6 @@
                     <div class="modal-body">
                         <form onsubmit="msg()" action="/addAction" method="post">
                             {% csrf_token %}
-                            <legend>Add or Remove Subject</legend>
-
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="sub_code">Subject Code</label>
@@ -138,6 +135,14 @@
                                       <option value="2">2</option>
                                       <option value="3">3</option>
                                       <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="offer_stats">Offer Status</label>
+                                    <select class="custom-select" name="offer_stats" id="offer_stats" value="{{data.offer_stats}}" required>
+                                      <option selected disabled value="">Choose...</option>
+                                      <option value="Offer">Offer</option>
+                                      <option value="Not Offer">Not Offer</option>
                                     </select>
                                 </div>
                             </div>
