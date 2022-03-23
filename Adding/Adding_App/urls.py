@@ -13,10 +13,8 @@ urlpatterns = [
     #path('logout/',),
     #head
     path('head/', views.head, name='head'),
-    path('showAllSub/', views.showAllSub, name='showAllSub'),
+    path('addsubject/', views.addsubject, name='addsubject'),
     path('requestapproval/', views.requestapproval, name='requestapproval'),
-    path('Add_Remove_Sub/', views.addAction, name='addAction'),
-    path('Add_Remove_Sub/', views.removeAction, name='removeAction'),
     #pic
     path('pic/', views.pic, name='pic'),
     path('checking/', views.checking, name='checking'),

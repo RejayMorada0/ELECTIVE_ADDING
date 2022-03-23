@@ -75,13 +75,17 @@ def login(request):
 
 #Head
 def head(request):
-    return render(request, 'Adding_App/head.html')
+    data = all_subjects.objects.all()
+    context={
+    'data': data
+    }
+    return render(request, 'Adding_App/head.html',context) 
 
 def requestapproval(request):
     return render(request, 'Adding_App/requestapproval.html')
 
 #Add Subject
-def addAction(request):
+def addsubject(request):
     if request.method=='POST':
         sub_code = request.POST.get('sub_code')
         sub_name = request.POST.get('sub_name')
@@ -91,25 +95,9 @@ def addAction(request):
 
         data = all_subjects.objects.create(sub_code = sub_code, sub_name = sub_name, year = year, semester = semester, offer_stats = "Not Offer")
         data.save()
-        return render(request, 'Adding_App/head.html')
-
-#Remove Subject
-def removeAction(request,id):
-    data = all_subjects.objects.get(id = id)
-    data.delete()
-    return redirect('/head')
-
-
-#Show All Subjects in Table
-def showAllSub(request):
-    data = all_subjects.objects.all()
-    context={
-    'data': data
-    }
-    return render(request, 'Adding_App/head.html',context) 
-
-
-
+        return render(request, 'Adding_App/add.html')
+        
+    return render(request, 'Adding_App/add.html')
 
 
 #pic

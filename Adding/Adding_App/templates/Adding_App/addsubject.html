@@ -38,14 +38,8 @@
 
             <form class="d-flex">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{%url 'Adding_App:head'%}" id="allsubjects">All Subjects <span class="sr-only">(current)</span></a>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{%url 'Adding_App:requestapproval'%}" id="request">Request Approval</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'Adding_App:index'%}" id="logoutbutton">Logout</a>
+                        <a class="nav-link" href="{%url 'Adding_App:head' %}" id="logoutbutton">Cancel</a>
                     </li>
                 </ul>
 
@@ -57,67 +51,47 @@
         <div class="welcome">WELCOME, DEPARTMENT HEAD!</div>
         <div class="subject">
             <p>SUBJECT OF BACHELOR OF ENGINEERING TECHNOLOGY Major in COMPUTER ENGINEERING TECHNOLOGY </p>
-            <a id="logoutbutton" value="+ add subject" href="{%url 'Adding_App:addsubject' %}"></a>
-        </div>
-
-        <div class="main">
-            <!--HTML code to display data in tabular format-->
-            <table>
-                <legend>ALL YEAR - ALL SEMESTER</legend>
-                <thead>
-                    <th>SUBJECT CODE</th>
-                    <th>SUBJECT NAME</th>
-                    <th>YEAR</th>
-                    <th>SEMESTER</th>
-                    <th>OFFERED STATUS</th>
-                    <th>ACTION</th>
-                </thead>
-
-                <tbody id="allsubtable">
-                    {% for item in data %}
-                    <tr>
-                        <td>{{item.sub_code}}</td>
-                        <td>{{item.sub_name}}</td>
-                        <td>{{item.year}}</td>
-                        <td>{{item.semester}}</td>
-                        <td>{{item.offer_stats}}</td>
-                    </tr>
-
-                </tbody>
-                {% endfor %}
-            </table>
 
         </div>
+        <form class="needs-validation" action="Add" method="post">
+            {% csrf_token %}
+            <legend>Add or Remove Subject</legend>
 
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="sub_code">Subject Code</label>
+                    <input type="text" class="form-control" name="sub_code" id="sub_code" required>
 
-        <!-- Modal -->
-        <form class="reqsub">
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">OFFERED SUBJECTS</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-                        </div>
-                        <div class="modal-body">
-                            <ol type="1" id="modalBody">
-
-
-                            </ol>
-
-                        </div>
-
-
-
-                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="sub_name">Subject Name</label>
+                    <input type="text" class="form-control" name="sub_name" id="sub_name" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="year">Year</label>
+                    <select class="custom-select" name="year" id="year" required>
+                  <option selected disabled value="">Choose...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="semester">Semester</label>
+                    <select class="custom-select" name="semester" id="semester" required>
+                  <option selected disabled value="">Choose...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
                 </div>
             </div>
+            <div class="button1">
+                <input class="btn btn-primary" type="submit" value="+ add subject" name="addAction">
+            </div>
         </form>
-
-
-
 
     </section>
 
