@@ -15,6 +15,8 @@ urlpatterns = [
     path('head/', views.head, name='head'),
     path('addsubject/', views.addsubject, name='addsubject'),
     path('addAction', views.addAction, name='addAction'),
+    path('edit/<str:sub_code>', views.edit),
+    path('delete/<str:sub_code>', views.destroy),
     path('requestapproval/', views.requestapproval, name='requestapproval'),
     #pic
     path('pic/', views.pic, name='pic'),

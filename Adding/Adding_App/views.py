@@ -101,7 +101,27 @@ def addAction(request):
         data.save()
         return redirect('/head')
 
+def edit(request,sub_code):
+    data = all_subjects.objects.get(sub_code=sub_code)
+    context = {'data': data}
+    return render(request, 'Adding_App/head.html',context) 
+
+def destroy(request,sub_code):
+    data = all_subjects.objects.get(sub_code=sub_code)
+    data.delete()
+    return redirect("Adding_App/head.html")
     
+"""
+def updateAction(request):
+    subject = all_subjects.objects.get(sub_code=sub_code)
+    subject.sub_code = request.POST.get('sub_code')
+    subject.sub_name = request.POST.get('sub_name')
+    subject.year = request.POST.get('year')
+    subject.semester = request.POST.get('semester')
+    subject.save()
+    return redirect('/head')
+
+"""   
 
 
 #pic
