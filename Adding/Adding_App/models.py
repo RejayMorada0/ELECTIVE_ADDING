@@ -43,6 +43,7 @@ class student_request(models.Model):
     year = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
     semester = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
     remarks = models.CharField(max_length=100)
+    #dagdag offer_stats
 
 
 #Head and PIC

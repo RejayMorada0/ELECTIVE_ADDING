@@ -23,56 +23,23 @@ def signup(request):
 
 def register(request):
     if request.method == 'POST':
-        stud_id = request.POST.get('stud_id')
-        fn = request.POST.get('fn')
-        ln = request.POST.get('ln')
-        section = request.POST.get('section')
-        email = request.POST.get('email')
-        passw = request.POST.get('passw')
-        cpassw = request.POST.get('cpassw')
-        data = student_accounts.objects.create(stud_id=stud_id, fn=fn, ln=ln, section=section, email=email, passw=passw)
-        data.save()
-        return render(request, 'Adding_App/index.html')
+        try:
+            data = student_accounts.objects.get(email=request.POST['email'], password=request.POST['password'])
+            return render(request, 'Adding_App/signup.html', {'error': 'User already exists'})
+        except:
+            stud_id = request.POST.get('stud_id')
+            fn = request.POST.get('fn')
+            ln = request.POST.get('ln')
+            section = request.POST.get('section')
+            email = request.POST.get('email')
+            passw = request.POST.get('passw')
+            cpassw = request.POST.get('cpassw')
 
-def login(request):
-    if request.method=="POST":
-        conn = sql.connect(host = "localhost", user = "root", password = "", database = 'adding_subjects_db')
-        cursor = conn.cursor()
-        req = request.POST
-        for key, value in req.items():
-            if key == "email":
-                email = value
-            if key == "passw":
-                passw = value
-        
-        select = "SELECT * FROM adding_app_student_accounts WHERE email='{}' and passw='{}'".format(email,passw)
-        
-        cursor.execute(select)
-        student = tuple(cursor.fetchall())
-        if student != ():
-            data = student_accounts.objects.filter(email = email)
-            #return render(request, 'Adding_App/student.html', {'data':data})
-            return redirect('/student', {'data':data})
-        else:
-            conn = sql.connect(host = "localhost", user = "root", password = "", database = 'adding_subjects_db')
-            cursor = conn.cursor()
-            req = request.POST
-            for key, value in req.items():
-                if key == "email":
-                    email = value
-                if key == "passw":
-                    passw = value
-            
-            select = "SELECT * FROM adding_app_head_access WHERE email1='{}' and passw1='{}'".format(email,passw)
-            cursor.execute(select)
-            head = tuple(cursor.fetchall())
-            if head != ():
-                data = head_access.objects.filter(email1 = email)
-                #return render(request, 'Adding_App/head.html', {'data':data})
-                return redirect('/head', {'data':data})
-            else:
-                return redirect('/index')       
+            data = student_accounts.objects.create(stud_id=stud_id, fn=fn, ln=ln, section=section, email=email, passw=passw)
+            data.save()
+            return render(request, 'Adding_App/index.html')
 
+def login(request):     
     return render(request, 'Adding_App/index.html') 
 
 #Head
@@ -121,6 +88,7 @@ def update(request,id):
     data.sub_name = request.POST.get('sub_name')
     data.year = request.POST.get('year')
     data.semester = request.POST.get('semester')
+    data.offer_stats = request.POST.get('offer_stats')
     data.save()
     return redirect('/head') 
 
