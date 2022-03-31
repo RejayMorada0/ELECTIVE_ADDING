@@ -1,9 +1,16 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
-from .models import all_subjects, student_accounts, head_access
-from django.contrib.auth.models import User
+from pyexpat.errors import messages
+from django.contrib import messages 
+
+
+from .models import all_subjects 
+from .models import student_accounts
+from .models import administrator_access
+
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, auth
-from django.contrib.auth import authenticate
+
 import mysql.connector as sql
 
 
@@ -24,7 +31,7 @@ def signup(request):
 def register(request):
     if request.method == 'POST':
         try:
-            data = student_accounts.objects.get(email=request.POST['email'], password=request.POST['password'])
+            data = student_accounts.objects.get(email=request.POST['email'], passw=request.POST['passw'])
             return render(request, 'Adding_App/signup.html', {'error': 'User already exists'})
         except:
             stud_id = request.POST.get('stud_id')
@@ -35,12 +42,27 @@ def register(request):
             passw = request.POST.get('passw')
             cpassw = request.POST.get('cpassw')
 
-            data = student_accounts.objects.create(stud_id=stud_id, fn=fn, ln=ln, section=section, email=email, passw=passw)
-            data.save()
-            return render(request, 'Adding_App/index.html')
+            user = User.objects.create(email=email, password=passw,)
 
-def login(request):     
-    return render(request, 'Adding_App/index.html') 
+            data = student_accounts (stud_id=stud_id, fn=fn, ln=ln, section=section, email=email, passw=passw)
+            data.save()
+            auth.login(request, user)
+            return render(request, 'Adding_App/index.html')
+    else:
+        return render(request, 'Adding_App/signup.html')
+
+
+def login(request):  
+    if request.method == 'POST':
+        user = auth.authenticate(email = request.POST['email'],  password = request.POST['passw'])
+        if user is not None:
+            return redirect('/student')
+        else:
+            return render(request, 'Adding_App/index.html')
+            # return HttpResponse({user})
+    else:
+        return render(request, 'Adding_App/index.html')
+        
 
 #Head
 def head(request):

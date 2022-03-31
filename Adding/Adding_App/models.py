@@ -17,7 +17,7 @@ class all_subjects(models.Model):
 
 #Student Accounts
 class student_accounts(models.Model):
-    stud_id = models.CharField(max_length=100,editable=False, primary_key=True)
+    stud_id = models.CharField(max_length=100,editable=False, unique=True)
     fn = models.CharField(max_length=100)
     ln = models.CharField(max_length=100)
     section = models.CharField(max_length=100)
@@ -25,6 +25,17 @@ class student_accounts(models.Model):
     passw = models.CharField(max_length=100)
     stud_stats = models.CharField(max_length=100)
     image = models.ImageField(max_length=100)
+
+    date_joined = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(auto_now=True)
+    is_admin = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.email
+
 
     #Function para may TUPC sa unahan 
     #https://stackoverflow.com/questions/52070462/django-generate-custom-id
@@ -36,20 +47,19 @@ class student_accounts(models.Model):
 #https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.ForeignKey.related_name
 #https://stackoverflow.com/questions/2606194/django-error-message-add-a-related-name-argument-to-the-definition
 class student_request(models.Model): 
-    trans_id = models.PositiveIntegerField(primary_key=True)
     stud_id = models.ForeignKey(student_accounts, on_delete=models.CASCADE, related_name='+')
     sub_code = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
     sub_name = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
     year = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
     semester = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
     remarks = models.CharField(max_length=100)
-    #dagdag offer_stats
+
 
 
 #Head and PIC
-class head_access(models.Model): #add user type (admin or pic) one table
-    email1 = models.EmailField(max_length=100)
-    passw1 = models.CharField(max_length=100)
+class administrator_access(models.Model): #add user type (head or pic) one table
+    email = models.EmailField(max_length=100, unique=True)
+    passw = models.CharField(max_length=100)
 
 #users model
 #https://simpleisbetterthancomplex.com/tutorial/2018/01/18/how-to-implement-multiple-user-types-with-django.html

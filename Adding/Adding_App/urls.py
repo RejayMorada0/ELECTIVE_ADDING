@@ -8,9 +8,8 @@ app_name = 'Adding_App'
 urlpatterns = [
     path('', views.index, name='index'),
     path('signup/', views.signup, name='signup'),
-    path('homepage/', views.login, name='login'),
+    path('login/', views.login, name='login'),
     path('register/', views.register, name='register'),
-    #path('logout/',),
     #head
     path('head/', views.head, name='head'),
     path('addsubject/', views.addsubject, name='addsubject'),
@@ -19,7 +18,6 @@ urlpatterns = [
     path('delete/<int:id>', views.delete),
     path('update/<int:id>', views.update),
     path('destroy/<int:id>', views.destroy),
-    #re_path(r'^delete/(?P<pk>[0-9]+)/$', views.destroy),
     path('requestapproval/', views.requestapproval, name='requestapproval'),
     #pic
     path('pic/', views.pic, name='pic'),
