@@ -1,7 +1,9 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from pyexpat.errors import messages
-from django.contrib import messages 
+from django.contrib import messages
+
+from Adding.Adding_App.forms import StudentRegistration 
 
 
 from .models import all_subjects 
@@ -26,42 +28,15 @@ def index(request):
 
 #Sign Up
 def signup(request):
-    return render(request, 'Adding_App/signup.html')
-
-def register(request):
+    form = StudentRegistration()
     if request.method == 'POST':
-        try:
-            data = student_accounts.objects.get(email=request.POST['email'], passw=request.POST['passw'])
-            return render(request, 'Adding_App/signup.html', {'error': 'User already exists'})
-        except:
-            stud_id = request.POST.get('stud_id')
-            fn = request.POST.get('fn')
-            ln = request.POST.get('ln')
-            section = request.POST.get('section')
-            email = request.POST.get('email')
-            passw = request.POST.get('passw')
-            cpassw = request.POST.get('cpassw')
+        form = StudentRegistration(request.post)
+        if form.is_valid():
+            form.save()
+            return redirect ('index')
+    context ={ 'form': form }
+    return render(request, 'Adding_App/signup.html', context)
 
-            user = User.objects.create(email=email, password=passw,)
-
-            data = student_accounts (stud_id=stud_id, fn=fn, ln=ln, section=section, email=email, passw=passw)
-            data.save()
-            auth.login(request, user)
-            return render(request, 'Adding_App/index.html')
-    else:
-        return render(request, 'Adding_App/signup.html')
-
-
-def login(request):  
-    if request.method == 'POST':
-        user = auth.authenticate(email = request.POST['email'],  password = request.POST['passw'])
-        if user is not None:
-            return redirect('/student')
-        else:
-            return render(request, 'Adding_App/index.html')
-            # return HttpResponse({user})
-    else:
-        return render(request, 'Adding_App/index.html')
         
 
 #Head
