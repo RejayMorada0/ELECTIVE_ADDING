@@ -7,7 +7,7 @@ app_name = 'Adding_App'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('registration/', views.registration, name='registration'),
+    path('signup/', views.signup, name='signup'),
     #head
     path('head/', views.head, name='head'),
     path('addsubject/', views.addsubject, name='addsubject'),
