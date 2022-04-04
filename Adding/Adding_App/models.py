@@ -5,6 +5,29 @@ import os
 
 # Create your models here.
 
+#Accounts
+class registration(AbstractUser):
+    userType = [
+        ('DH', 'Department Head'),
+        ('PIC', 'Person-in-charge'),
+        ('STDNT', 'Student'),
+    ]
+    section = models.CharField(max_length=100)
+    stud_id = models.CharField(max_length=100,editable=False, unique=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
+    password = models.CharField(max_length=100)
+    stud_stats = models.CharField(max_length=100)
+    image = models.ImageField(max_length=100)
+
+
+
+
+    #Function para may TUPC sa unahan 
+    #https://stackoverflow.com/questions/52070462/django-generate-custom-id
+    
+
 #All Subjects
 class all_subjects(models.Model):
     sub_code = models.CharField(max_length=100, unique=True)
@@ -12,34 +35,6 @@ class all_subjects(models.Model):
     year = models.PositiveIntegerField()
     semester = models.PositiveIntegerField()
     offer_stats = models.CharField(max_length=100)
-
-
-
-#Student Accounts
-class student_accounts(models.Model):
-    stud_id = models.CharField(max_length=100,editable=False, unique=True)
-    fn = models.CharField(max_length=100)
-    ln = models.CharField(max_length=100)
-    section = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100, unique=True)
-    passw = models.CharField(max_length=100)
-    stud_stats = models.CharField(max_length=100)
-    image = models.ImageField(max_length=100)
-
-    date_joined = models.DateTimeField(auto_now_add=True)
-    last_login = models.DateTimeField(auto_now=True)
-    is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.email
-
-
-    #Function para may TUPC sa unahan 
-    #https://stackoverflow.com/questions/52070462/django-generate-custom-id
-    
     
 
 #Student Request
@@ -55,11 +50,6 @@ class student_request(models.Model):
     remarks = models.CharField(max_length=100)
 
 
-
-#Head and PIC
-class administrator_access(models.Model): #add user type (head or pic) one table
-    email = models.EmailField(max_length=100, unique=True)
-    passw = models.CharField(max_length=100)
 
 #users model
 #https://simpleisbetterthancomplex.com/tutorial/2018/01/18/how-to-implement-multiple-user-types-with-django.html

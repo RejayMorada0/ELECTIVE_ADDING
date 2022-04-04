@@ -3,16 +3,9 @@ from django.forms import ModelForm
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import studentaccounts
+from .models import registration
 
-
-class AuthorForm(ExtendedMetaModelForm):
+class StudentRegistration(UserCreationForm):
     class Meta:
-        model = Author
-        field_args = {
-            "email" : {
-                "error_messages" : {
-                    "required" : "Email already exist!"
-                }
-            }
-        }
+        model: registration
+        fields = {'username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'stud_id', 'stud_stats', 'section', 'image', 'userType'}
