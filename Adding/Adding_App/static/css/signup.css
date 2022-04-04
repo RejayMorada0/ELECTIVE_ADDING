@@ -151,7 +151,8 @@ a.loginlabel {
 .form-group1a input,
 .form-group2 input,
 .form-group2a select,
-.form-control {
+.form-control,
+.form-group {
     background-color: #ffffff;
     font-family: 'Roboto', sans-serif;
     height: 50px;
@@ -159,6 +160,8 @@ a.loginlabel {
     font-weight: 300;
     font-size: 18px;
     border-radius: 10px;
+    width: 100%;
+    padding: 0 15px 0 15px;
 }
 
 .form-group1 input:focus,
