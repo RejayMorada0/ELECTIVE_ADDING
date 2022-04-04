@@ -24,10 +24,12 @@ def registration(request):
     if request.method == 'POST':
         form = StudentRegistration(request.POST)
         if form.is_valid():
+            userType = form.cleaned_data.get('STDNT')
+            form.instance.userType = 'STDNT'
             form.save()
             return redirect ('index')
     context =  {'form': form }
-    return render(request, 'Adding_App/signup.html', context)
+    return render(request, 'Adding_App/registration.html', context)
 
         
 
