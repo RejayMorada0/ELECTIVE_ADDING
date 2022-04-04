@@ -1,27 +1,34 @@
-from django.contrib.auth.models import AbstractUser
+from email.policy import default
 from django.db import models
 from django.db.models import Model
 import os
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
 #Accounts
 class registration(AbstractUser):
+    section = [
+        ('1A', 'BET-COET-S-1A'),
+        ('1B', 'BET-COET-NS-1B'),
+        ('2A', 'BET-COET-S-2A'),
+        ('2B', 'BET-COET-NS-2B'),
+        ('3A', 'BET-COET-S-3A'),
+        ('3B', 'BET-COET-NS-3B'),
+        ('4A', 'BET-COET-S-4A'),
+        ('4B', 'BET-COET-NS-4B'),
+    ]
     userType = [
         ('DH', 'Department Head'),
         ('PIC', 'Person-in-charge'),
         ('STDNT', 'Student'),
     ]
-    section = models.CharField(max_length=100)
-    stud_id = models.CharField(max_length=100,editable=False, unique=True)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100, unique=True)
-    password = models.CharField(max_length=100)
-    stud_stats = models.CharField(max_length=100)
+
+    section = models.CharField(max_length=30, choices= section, verbose_name='section')
+    stud_id = models.CharField(max_length=100, unique=True)
+    stud_stats = models.CharField(max_length=100, default='Processing')
     image = models.ImageField(max_length=100)
-
-
+    userType = models.CharField(max_length=30, choices= userType, verbose_name='userType')
 
 
     #Function para may TUPC sa unahan 
@@ -42,7 +49,7 @@ class all_subjects(models.Model):
 #https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.ForeignKey.related_name
 #https://stackoverflow.com/questions/2606194/django-error-message-add-a-related-name-argument-to-the-definition
 class student_request(models.Model): 
-    stud_id = models.ForeignKey(student_accounts, on_delete=models.CASCADE, related_name='+')
+    stud_id = models.ForeignKey(registration, on_delete=models.CASCADE, related_name='+')
     sub_code = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
     sub_name = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
     year = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
@@ -50,14 +57,3 @@ class student_request(models.Model):
     remarks = models.CharField(max_length=100)
 
 
-
-#users model
-#https://simpleisbetterthancomplex.com/tutorial/2018/01/18/how-to-implement-multiple-user-types-with-django.html
-# class User(AbstractUser):
-#   USER_TYPE_CHOICES = (
-#       (1, 'student'),
-#       (2, 'pic'),
-#       (3, 'head'),
-#   )
-
-#   user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES)

@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import all_subjects, student_accounts, student_request, administrator_access
+#from .models import all_subjects, user_registration, student_request
 
 # Register your models here.
 
-admin.site.register(all_subjects)
-admin.site.register(student_accounts)
+#admin.site.register(all_subjects)
+#admin.site.register(user_registration)

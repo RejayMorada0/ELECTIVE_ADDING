@@ -133,3 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 #templates = [{'DIRS': [os.path.join(SETTINGS_PATH, 'templates')]}]
 #INSTALLED_APPS = ['Adding_App',]
+
+AUTH_USER_MODEL = 'Adding_App.registration'

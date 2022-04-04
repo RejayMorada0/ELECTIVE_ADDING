@@ -1,17 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from pyexpat.errors import messages
-from django.contrib import messages
+#from django.contrib import messages
 
-from Adding.Adding_App.forms import StudentRegistration 
-
-
-from .models import all_subjects 
-from .models import student_accounts
-from .models import administrator_access
-
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User, auth
+from .models import *
+from django.contrib.auth.forms import UserCreationForm
+from .forms import StudentRegistration, RecieverRegistration
 
 import mysql.connector as sql
 
@@ -19,23 +13,21 @@ import mysql.connector as sql
 # Create your views here.
 installed_apps = ['Adding_App']
 
-#def index (request):
-#    return HttpResponse( "Welcome to Web Development 2")
 
 #Login Page
 def index(request):
    return render(request, 'Adding_App/index.html')
 
 #Sign Up
-def signup(request):
+def registration(request):
     form = StudentRegistration()
     if request.method == 'POST':
-        form = StudentRegistration(request.post)
+        form = StudentRegistration(request.POST)
         if form.is_valid():
             form.save()
-            return redirect ('index')
+            return redirect ('Adding_App/index.html')
     context ={ 'form': form }
-    return render(request, 'Adding_App/signup.html', context)
+    return render(request, 'Adding_App/registration.html', context)
 
         
 
