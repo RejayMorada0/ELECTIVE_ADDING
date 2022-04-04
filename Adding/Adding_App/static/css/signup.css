@@ -152,7 +152,9 @@ a.loginlabel {
 .form-group2 input,
 .form-group2a select,
 .form-control,
-.form-group {
+.form-group3 input,
+.form-group4 input,
+.form-group5 input {
     background-color: #ffffff;
     font-family: 'Roboto', sans-serif;
     height: 50px;
@@ -167,7 +169,10 @@ a.loginlabel {
 .form-group1 input:focus,
 .form-group1a input:focus,
 .form-group2 input:focus,
-.form-control:focus {
+.form-control:focus,
+.form-group3 input:focus,
+.form-group4 input:focus,
+.form-group5 input:focus {
     box-shadow: none;
 }
 
@@ -176,4 +181,41 @@ a.loginlabel {
 
 .form-group2a select {
     padding: 0 10px 0 10px;
+}
+
+.form-group1:before {
+    content: "First Name";
+}
+
+.form-group1a:before {
+    content: "Last Name";
+}
+
+.form-group2:before {
+    content: "Student ID";
+}
+
+.form-group2a:before {
+    content: "Year and Section";
+}
+
+.form-group3:before {
+    content: "Email";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group4:before {
+    content: "Password";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group5:before {
+    content: "Confirm Password";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
 }
