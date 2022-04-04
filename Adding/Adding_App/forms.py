@@ -11,7 +11,7 @@ class StudentRegistration(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'section', 'stud_id', 'stud_stats', 'image']
 
 
-class RecieverRegistration(UserCreationForm):
+class ReceiverRegistration(UserCreationForm):
     class Meta:
         model = registration
         fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'section', 'stud_id', 'stud_stats', 'image', 'userType']

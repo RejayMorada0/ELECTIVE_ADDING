@@ -5,7 +5,7 @@ from pyexpat.errors import messages
 
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
-from .forms import StudentRegistration, RecieverRegistration
+from .forms import StudentRegistration, ReceiverRegistration
 
 import mysql.connector as sql
 
@@ -29,7 +29,6 @@ def registration(request):
     context =  {'form': form }
     return render(request, 'Adding_App/registration.html', context)
 
-        
 
 #Head
 def head(request):
@@ -37,7 +36,18 @@ def head(request):
     context={
     'data': data
     }
-    return render(request, 'Adding_App/head.html',context) 
+    return render(request, 'Adding_App/head.html',context)
+
+    # form = ReceiverRegistration()
+    # if request.method == "POST":
+    #     form ReceiverRegistration (request. POST)
+    #     if form.is_valid ():
+    #         form.save ()
+    #         return redirect('index')
+    # context = { 'form': form }
+    # return render(request, 'Adding_App/head.html.html', context)
+
+    
 
 def requestapproval(request):
     return render(request, 'Adding_App/requestapproval.html')

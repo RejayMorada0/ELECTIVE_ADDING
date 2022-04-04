@@ -28,7 +28,7 @@ class registration(AbstractUser):
     stud_id = models.CharField(max_length=100, unique=True)
     stud_stats = models.CharField(max_length=100, default='Processing')
     image = models.ImageField(max_length=100)
-    userType = models.CharField(max_length=30, choices= userType, verbose_name='userType')
+    userType = models.CharField(max_length=30, choices= userType, verbose_name='userType', default ='')
 
 
     #Function para may TUPC sa unahan 
