@@ -8,10 +8,10 @@ from .models import registration
 class StudentRegistration(UserCreationForm):
     class Meta:
         model = registration
-        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'section', 'stud_id', 'stud_stats']
+        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'section', 'stud_id']
 
 
 class ReceiverRegistration(UserCreationForm):
     class Meta:
         model = registration
-        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'section', 'stud_id', 'stud_stats', 'image', 'userType']
+        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'section','stud_id', 'stud_stats', 'image', 'userType']

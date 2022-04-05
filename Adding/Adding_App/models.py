@@ -23,11 +23,17 @@ class registration(AbstractUser):
         ('PIC', 'Person-in-charge'),
         ('STDNT', 'Student'),
     ]
+    stud_stats = [
+        ('Pr','Processing'),
+        ('Req','Requested'),
+        ('W','Waiting for approval'),
+        ('A','Approved'),
+    ]
 
     section = models.CharField(max_length=30, choices= section, verbose_name='section')
-    stud_id = models.CharField(max_length=100, unique=True)
-    stud_stats = models.CharField(max_length=100, default='Processing')
-    image = models.ImageField(max_length=100)
+    stud_id = models.IntegerField(unique=True, verbose_name='stud_id')
+    stud_stats = models.CharField(max_length=30, choices= stud_stats, verbose_name='stud_stats', default ='Pr')
+    image = models.ImageField(max_length=100, default ='')
     userType = models.CharField(max_length=30, choices= userType, verbose_name='userType', default ='')
 
 

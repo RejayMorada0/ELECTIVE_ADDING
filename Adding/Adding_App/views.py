@@ -25,7 +25,7 @@ def registration(request):
         form = StudentRegistration(request.POST)
         if form.is_valid():
             form.save()
-            return redirect ('index')
+            return redirect ('/index')
     context =  {'form': form }
     return render(request, 'Adding_App/registration.html', context)
 
