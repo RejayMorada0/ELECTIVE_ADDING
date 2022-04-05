@@ -154,7 +154,8 @@ a.loginlabel {
 .form-control,
 .form-group3 input,
 .form-group4 input,
-.form-group5 input {
+.form-group5 input,
+.form-group3a input {
     background-color: #ffffff;
     font-family: 'Roboto', sans-serif;
     height: 50px;
@@ -172,7 +173,8 @@ a.loginlabel {
 .form-control:focus,
 .form-group3 input:focus,
 .form-group4 input:focus,
-.form-group5 input:focus {
+.form-group5 input:focus,
+.form-group3a input:focus {
     box-shadow: none;
 }
 
@@ -201,6 +203,13 @@ a.loginlabel {
 
 .form-group3:before {
     content: "Email";
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.form-group3a:before {
+    content: "Username";
     display: flex;
     justify-content: flex-start;
     padding-left: 10px;
