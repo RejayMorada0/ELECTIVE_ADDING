@@ -37,49 +37,47 @@
             {% csrf_token %}
             <div class="formGroup1">
                 <div class="form-group1">
-                    <h4>{{form.first_name.label}}</h4>
+                    <!-- <h4>{{form.first_name.label}}</h4> -->
                     {{form.first_name}}
                 </div>
                 <div class="form-group1a">
-                    <h4>{{form.last_name.label}}</h4>
+                    <!-- <h4>{{form.last_name.label}}</h4> -->
                     {{form.last_name}}
                 </div>
             </div>
             <div class="formGroup2">
                 <div class="form-group2">
-                    <h4>{{form.stud_id.label}}</h4>
+                    <!-- <h4>{{form.stud_id.label}}</h4> -->
                     {{form.stud_id}}
                 </div>
                 <div class="form-group2a">
-                    <h4>{{form.section.label}}</h4>
+                    <!-- <h4>{{form.section.label}}</h4> -->
                     {{form.section}}
                 </div>
             </div>
 
-            <div class="form-group3">
-                <h4>{{form.username.label}}</h4>
-                {{form.username}}
-            </div>
 
             <div class="form-group3">
-                <h4>{{form.email.label}}</h4>
+                <!-- <h4>{{form.email.label}}</h4> -->
                 {{form.email}}
             </div>
 
+            <div class="form-group3a">
+                <!-- <h4>{{form.username.label}}</h4> -->
+                {{form.username}}
+            </div>
+
             <div class="form-group4">
-                <h4>{{form.password1.label}}</h4>
+                <!-- <h4>{{form.password1.label}}</h4> -->
                 {{form.password1}}
             </div>
 
             <div class="form-group5">
-                <h4>{{form.password2.label}}</h4>
+                <!-- <h4>{{form.password2.label}}</h4> -->
                 {{form.password2}}
             </div>
 
-            <div class="form-group5">
-                <h4>{{form.userType.label}}</h4>
-                {{form.userType}}
-            </div>
+
 
             <input class="signup" type="submit" name="register" value="Sign Up">
 
