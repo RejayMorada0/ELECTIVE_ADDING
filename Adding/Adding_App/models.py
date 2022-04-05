@@ -34,7 +34,7 @@ class registration(AbstractUser):
     stud_id = models.IntegerField(unique=True, verbose_name='stud_id')
     stud_stats = models.CharField(max_length=30, choices= stud_stats, verbose_name='stud_stats', default ='Pr')
     image = models.ImageField(max_length=100, default ='')
-    userType = models.CharField(max_length=30, choices= userType, verbose_name='userType', default ='')
+    userType = models.CharField(max_length=30, choices= userType, verbose_name='userType', default ='STDNT')
 
 
     #Function para may TUPC sa unahan 
