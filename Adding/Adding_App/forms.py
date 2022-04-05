@@ -8,7 +8,7 @@ from .models import registration
 class StudentRegistration(UserCreationForm):
     class Meta:
         model = registration
-        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'section', 'stud_id']
+        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name', 'section', 'stud_id', 'userType']
 
 
 class ReceiverRegistration(UserCreationForm):
