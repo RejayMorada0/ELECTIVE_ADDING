@@ -19,9 +19,9 @@ class registration(AbstractUser):
         ('4B', 'BET-COET-NS-4B'),
     ]
     userType = [
+        ('STDNT', 'Student'),
         ('DH', 'Department Head'),
         ('PIC', 'Person-in-charge'),
-        ('STDNT', 'Student'),
     ]
     stud_stats = [
         ('Pr','Processing'),

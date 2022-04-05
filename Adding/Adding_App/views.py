@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 #from pyexpat.errors import messages
-#from django.contrib import messages
+from django.contrib import messages
 
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
@@ -37,10 +37,7 @@ def head(request):
     'data': data
     }
     return render(request, 'Adding_App/head.html',context)
-
-    
-
-    
+  
 
 def requestapproval(request):
     return render(request, 'Adding_App/requestapproval.html')
