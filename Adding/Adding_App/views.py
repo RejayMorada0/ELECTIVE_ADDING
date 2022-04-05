@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
-from pyexpat.errors import messages
+#from pyexpat.errors import messages
 #from django.contrib import messages
 
 from .models import *
@@ -38,14 +38,7 @@ def head(request):
     }
     return render(request, 'Adding_App/head.html',context)
 
-    # form = ReceiverRegistration()
-    # if request.method == "POST":
-    #     form ReceiverRegistration (request. POST)
-    #     if form.is_valid ():
-    #         form.save ()
-    #         return redirect('index')
-    # context = { 'form': form }
-    # return render(request, 'Adding_App/head.html.html', context)
+    
 
     
 
@@ -94,7 +87,14 @@ def update(request,id):
 
 #pic
 def pic(request):
-    return render(request, 'Adding_App/pic.html')
+    form = ReceiverRegistration()
+    if request.method == "POST":
+        form = ReceiverRegistration(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    context = { 'form': form }
+    return render(request, 'Adding_App/pic.html', context)
 
 def checking(request):
     return render(request, 'Adding_App/checking.html')
