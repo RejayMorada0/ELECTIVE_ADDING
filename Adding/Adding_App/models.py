@@ -23,23 +23,13 @@ class registration(AbstractUser):
         ('DH', 'Department Head'),
         ('PIC', 'Person-in-charge'),
     ]
-    stud_stats = [
-        ('Pr','Processing'),
-        ('Req','Requested'),
-        ('W','Waiting for approval'),
-        ('A','Approved'),
-    ]
 
     section = models.CharField(max_length=30, choices= section, verbose_name='section')
     stud_id = models.IntegerField(unique=True, verbose_name='stud_id')
-    stud_stats = models.CharField(max_length=30, choices= stud_stats, verbose_name='stud_stats', default ='Pr')
+    stud_stats = models.CharField(max_length=30, default ='Processing')
     image = models.ImageField(max_length=100, default ='')
     userType = models.CharField(max_length=30, choices= userType, verbose_name='userType', default ='STDNT')
 
-
-    #Function para may TUPC sa unahan 
-    #https://stackoverflow.com/questions/52070462/django-generate-custom-id
-    
 
 #All Subjects
 class all_subjects(models.Model):
