@@ -35,7 +35,7 @@
             {% csrf_token %}
             <legend>Update Subject</legend>
 
-            <div class="form-row">
+            <div class="form-row" id="FORMFORM">
                 <div class="col-md-4 mb-3">
                     <label for="sub_code">Subject Code</label>
                     <input type="text" class="form-control" name="sub_code" id="sub_code" value="{{data.sub_code}}" required>

@@ -114,7 +114,7 @@ section {
 
 .button1 {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -249,4 +249,16 @@ td {
         display: flex;
         justify-content: flex-end;
     }
+}
+
+
+/* BAGONG EDIT KO TO  */
+
+#FORMFORM {
+    display: grid;
+    justify-items: center;
+}
+
+legend {
+    text-align: center;
 }
