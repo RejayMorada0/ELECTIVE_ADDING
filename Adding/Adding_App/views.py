@@ -128,18 +128,29 @@ def update(request,id):
 
 
 #pic
-def pic(request):
-    form = ReceiverRegistration()
-    if request.method == "POST":
-        form = ReceiverRegistration(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    context = { 'form': form }
+def pic(request,id):
+    data = registration.objects.all()
+    context={
+    'data': data
+    }
+    print(context)
     return render(request, 'Adding_App/pic.html', context)
 
+def addRemark(request):
+    if request.method=='POST':
+        sub_code = request.POST.get('sub_code')
+        sub_name = request.POST.get('sub_name')
+
 def checking(request):
-    return render(request, 'Adding_App/checking.html')
+    data = all_subjects.objects.filter(offer_stats='Offer')
+    context={
+    'data': data
+    }
+    print(context)
+    
+   
+  
+    return render(request, 'Adding_App/checking.html', context)
 
 def studentrecords(request):
     return render(request, 'Adding_App/studentrecords.html')

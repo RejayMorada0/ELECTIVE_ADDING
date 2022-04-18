@@ -78,36 +78,26 @@
                     </tr>
                 </thead>
                 <tbody id=picstudenttable border="1">
-                    <!-- PHP CODE TO FETCH DATA FROM ROWS-->
-                    <?php   // LOOP TILL END OF DATA 
-                            while($rows=$student_data->fetch_assoc())
-                            {
-                        ?>
-
+                    {% for data in data %}
                     <tr>
-                        <!--FETCHING DATA FROM EACH 
-                                ROW OF EVERY COLUMN-->
                         <td class='item-id'>
-                            <?php echo $rows['stud_id'];?>
+                            {{data.stud_id}}
                         </td>
                         <td class='item-name'>
-                            <?php echo $rows['fn'];?>
-                            <?php echo $rows['ln'];?>
+                            {{data.last_name}} {{data.first_name}}
                         </td>
                         <td>
-                            <?php echo $rows['section'];?>
+                            {{data.section}}
                         </td>
                         <td>
-                            <?php echo $rows['email'];?>
+                            {{data.email}}
                         </td>
                         <td>
-                            <?php echo $rows['stud_stats'];?>
+                            {{data.stud_stats}}
                         </td>
                     </tr>
+                    {% endfor %}
 
-                    <?php
-                            }
-                        ?>
                 </tbody>
             </table>
         </div>
