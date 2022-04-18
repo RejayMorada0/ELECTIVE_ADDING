@@ -8,7 +8,7 @@ app_name = 'Adding_App'
 urlpatterns = [
     path('', views.index, name='index'),
     path('index', views.index, name='index'),
-    path('registration/', views.registration, name='registration'),
+    path('registration/', views.userregistration, name='registration'),
     path('logout/', views.logoutUser, name= 'logout'),
     #head
     path('head/', views.head, name='head'),

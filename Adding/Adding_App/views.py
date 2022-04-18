@@ -34,10 +34,12 @@ def index(request):
         elif user is not None and user.userType == 'PIC':
             login(request, user)
             return redirect('/pic')
+        else:
+            messages.info(request, 'Invalid Credentials')
     return render(request, 'Adding_App/index.html')
 
 #Sign Up
-def registration(request):
+def userregistration(request):
     form = StudentRegistration()
     if request.method == 'POST':
         form = StudentRegistration(request.POST)
@@ -52,12 +54,24 @@ def logoutUser(request):
     logout(request)
     return redirect('/index')
 
+#student
+def student(request):
+    current_user = request.user
+    last_name = current_user.first_name
+    first_name = current_user.last_name
+    stud_id = current_user.stud_id
+    section = current_user.section
+    context = {'first_name' : first_name, 'last_name': last_name, 'stud_id': stud_id, 'section': section}
+    print(context)
+    return render(request, 'Adding_App/student.html',context)
+
 #Head
 def head(request):
     data = all_subjects.objects.all()
     context={
     'data': data
     }
+    print(context)
     return render(request, 'Adding_App/head.html',context)
   
 
@@ -121,6 +135,4 @@ def checking(request):
 def studentrecords(request):
     return render(request, 'Adding_App/studentrecords.html')
 
-#student
-def student(request):
-    return render(request, 'Adding_App/student.html')
+

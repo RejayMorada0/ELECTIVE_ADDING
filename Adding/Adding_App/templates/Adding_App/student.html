@@ -60,9 +60,9 @@
                     <label>Year Course and Section:</label>
                 </div>
                 <div class="data">
-                    <label id='studentnumber1'><?php echo $user_data['stud_id']; ?></label>
-                    <label id='fullname1'><?php echo $user_data['fn']; ?> <?php echo $user_data['ln']; ?></label>
-                    <label id='section1'><?php echo $user_data['section']; ?></label>
+                    <label id='studentnumber1'>TUPC-{{stud_id}}</label>
+                    <label id='fullname1'>{{first_name}} {{last_name}}</label>
+                    <label id='section1'>{{section}}</label>
                 </div>
 
             </div>
@@ -72,10 +72,10 @@
                     <label>Status:</label>
                 </div>
                 <div class="statusCenter">
-                    <label id='status1'><?php echo $user_data['stud_stats']; ?></label>
+                    <label id='status1'></label>
                 </div>
                 <form class="form-inline" target="_blank" method="post" action="generate_pdf.php">
-                    <div class="statusCenter" <?php echo $style;?>>
+                    <div class="statusCenter">
                         <button download type="submit" id="pdf" name="generate_pdf"> <i class="bi bi-download"></i> Download PDF</button>
                     </div>
                 </form>
@@ -85,7 +85,6 @@
                     <a class="nav-link" href="{%url 'Adding_App:logout'%}" id="logoutbutton1">Logout</a>
                 </li>
             </ul>
-
 
         </div>
     </section>
