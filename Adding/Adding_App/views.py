@@ -57,12 +57,21 @@ def logoutUser(request):
 #student
 def student(request):
     current_user = request.user
+    username = current_user.username
     last_name = current_user.first_name
     first_name = current_user.last_name
     stud_id = current_user.stud_id
     section = current_user.section
-    context = {'first_name' : first_name, 'last_name': last_name, 'stud_id': stud_id, 'section': section}
+    stud_stats = current_user.stud_stats
+    image = current_user.image
+    context = {'first_name' : first_name, 'last_name': last_name, 'stud_id': stud_id, 'section': section, 'stud_stats': stud_stats, 'image':image}
     print(context)
+    if request.method == 'POST':
+        data = registration.objects.get(username=username)
+        data.image = request.POST.get('image')
+        data.stud_stats = 'Requested'
+        data.save()
+        return redirect('/student') 
     return render(request, 'Adding_App/student.html',context)
 
 #Head

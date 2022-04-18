@@ -72,13 +72,15 @@
                     <label>Status:</label>
                 </div>
                 <div class="statusCenter">
-                    <label id='status1'></label>
+                    <label id='status1'>{{stud_stats}}</label>
                 </div>
+                {% if stud_stats == 'Approved' %}
                 <form class="form-inline" target="_blank" method="post" action="generate_pdf.php">
                     <div class="statusCenter">
                         <button download type="submit" id="pdf" name="generate_pdf"> <i class="bi bi-download"></i> Download PDF</button>
                     </div>
                 </form>
+                {% endif %}
             </div>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -92,39 +94,38 @@
     <section>
         <div class="subject">
             <p>REQUEST OF SUBJECT</p>
+            {% if stud_stats == 'Approved' %}
             <form method="post">
-                <input type="submit" value="Request New" id="editGrade" name="editAction" <?php echo $style1;?> >
+                <input type="submit" value="Request New" id="editGrade" name="editAction">
             </form>
+            {% endif %}
         </div>
 
         <div>
 
-            <form>
-                <div class="tab-content" id="myTabContent">
+            {% if stud_stats == 'Processing' %}
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="imgforgrades">
+                    <p>*Before submitting the Submit Request button make sure to input your previous grades on the following academic year and upload a photo from ers as a proof. After that your transaction status will be changed as 'Requested' and wait
+                        for the approval of Admin.</p>
+                    <input type="file" name="image" id="file" required>
+                </div>
 
-                    <form name="student_grade" method="post">
-                        <div class="imgforgrades" hidden>
-                            <p>*Input your previous grades on the following academic year and upload a photo from ers as a proof.</p>
-                            <input type="file" name="gradesfile" accept=".jpg, .png, .jpeg">
-                        </div>
+                <div class="submitbutton">
+                    <input type="submit" value="SUBMIT REQUEST" id="submitbtn" name="submitAction">
+                </div>
+            </form>
+            {% endif %}
 
-                        <div class="submitbutton" hidden>
-                            <input type="submit" value="SUBMIT REQUEST" id="">
-                        </div>
-                    </form>
-
-                    <form method="post" enctype='multipart/form-data'>
-                        <div class="imgforgrades">
-                            <p>*Before submitting the Submit Request button make sure to input your previous grades on the following academic year and upload a photo from ers as a proof. After that your transaction status will be changed as 'Requested' and
-                                wait for the approval of Admin.</p>
-                            <input type="file" name="image" id="file" required>
-                        </div>
-
-                        <div class="submitbutton">
-                            <input type="submit" value="SUBMIT REQUEST" id="submitbtn" name="submitAction" <?php echo $disable_style;?> >
-                        </div>
-                    </form>
-
+            <div>
+                {% if stud_stats != 'Processing' %}
+                <div class="imgforgrades">
+                    <p>*Submiited picture of your grade is attached here.</p>
+                    <a download target="_blank" href=""> {{image}} </a>
+                </div>
+                {% endif %}
+            </div>
     </section>
 
 
