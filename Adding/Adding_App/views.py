@@ -128,7 +128,7 @@ def update(request,id):
 
 
 #pic
-def pic(request,id):
+def pic(request):
     data = registration.objects.all()
     context={
     'data': data
@@ -148,7 +148,6 @@ def checking(request):
     }
     print(context)
     
-   
   
     return render(request, 'Adding_App/checking.html', context)
 

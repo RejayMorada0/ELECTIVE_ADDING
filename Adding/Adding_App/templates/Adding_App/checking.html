@@ -192,7 +192,8 @@
         var name = localStorage.getItem("name");
         document.getElementById("studentname").innerHTML = "Student:" + " " + id + " " + name;
 
-        //trancfer js var in php var
+        //trancfer js var in django var
+        document.cookie = "id = " + id;
     </script>
 </body>
 
