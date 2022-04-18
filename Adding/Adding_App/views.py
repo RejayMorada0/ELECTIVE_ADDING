@@ -6,6 +6,7 @@ from django.contrib import messages
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from .forms import StudentRegistration, ReceiverRegistration
+from django.contrib.auth import authenticate, login, logout
 
 import mysql.connector as sql
 
@@ -16,7 +17,24 @@ installed_apps = ['Adding_App']
 
 #Login Page
 def index(request):
-   return render(request, 'Adding_App/index.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password') 
+        user = authenticate(request, username=username, password=password) 
+        print(user)
+
+        if user is not None and user.userType == 'STDNT':
+            login(request, user)
+            return redirect('/student')
+        
+        elif user is not None and user.userType == 'DH':
+            login(request, user)
+            return redirect('/head')
+
+        elif user is not None and user.userType == 'PIC':
+            login(request, user)
+            return redirect('/pic')
+    return render(request, 'Adding_App/index.html')
 
 #Sign Up
 def registration(request):
@@ -29,6 +47,10 @@ def registration(request):
     context =  {'form': form }
     return render(request, 'Adding_App/registration.html', context)
 
+#Log Out
+def logoutUser(request):
+    logout(request)
+    return redirect('/index')
 
 #Head
 def head(request):
