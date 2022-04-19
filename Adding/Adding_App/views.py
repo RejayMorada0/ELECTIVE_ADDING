@@ -130,9 +130,7 @@ def update(request,id):
 #pic
 def pic(request):
     data = registration.objects.all()
-    context={
-    'data': data
-    }
+    context = {'data': data}
     print(context)
     return render(request, 'Adding_App/pic.html', context)
 
@@ -143,12 +141,8 @@ def addRemark(request):
 
 def checking(request):
     data = all_subjects.objects.filter(offer_stats='Offer')
-    context={
-    'data': data
-    }
+    context = {'data': data}
     print(context)
-    
-  
     return render(request, 'Adding_App/checking.html', context)
 
 def studentrecords(request):
