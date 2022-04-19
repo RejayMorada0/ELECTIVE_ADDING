@@ -95,7 +95,6 @@ def addAction(request):
         year = request.POST.get('year')
         semester = request.POST.get('semester')
         offer_stats = request.POST.get('offer_stats')
-
         data = all_subjects.objects.create(sub_code = sub_code, sub_name = sub_name, year = year, semester = semester, offer_stats = offer_stats)
         data.save()
         return redirect('/head')
@@ -126,28 +125,30 @@ def update(request,id):
 
 #pic
 def pic(request):
-    data = registration.objects.filter(userType='STDNT')
-    context = {'data': data}
+    students = registration.objects.all()
+    context={'students': students}
     print(context)
-    if request.method == 'POST':
-        internal_id = request.POST.get('internal_id')
-        instance = registration.objects.get(stud_id=internal_id)
-        print(internal_id)
-        studentrequest = student_request.objects.filter(stud_id = internal_id)
-        context1 = {'studentrequest':studentrequest, 'internal_id': internal_id}
-        return render(request, 'Adding_App/checking.html', context1)
     return render(request, 'Adding_App/pic.html', context)
 
-def checking(request):
-    data = all_subjects.objects.filter(offer_stats = 'Offer')
-    context = {'data': data}
-    print(context)
-    return render(request, 'Adding_App/checking.html', context)
 
-def addRemark(request):
-    if request.method=='POST':
-        sub_code = request.POST.get('sub_code')
-        sub_name = request.POST.get('sub_name')
+def checking(request,id):
+    data = registration.objects.get(id=id)
+    studentReq = student_request.objects.filter(stud_id=data.id)
+    offerSub = all_subjects.objects.filter(offer_stats='Offer')
+    return render(request, 'Adding_App/checking.html',  {'data':data, 'studentReq':studentReq , 'offerSub':offerSub} )
+
+
+def addRemark(request,id):
+    data = registration.objects.get(id=id)
+    if request.method =='POST':
+        grades = request.POST.get('grades')
+        remarks = request.POST.get('remarks')
+        data = student_request.objects.create( grades = grades, remarks = remarks)
+        data.save()
+        return redirect('/checking/'+ str(id))
+   
+
+   
 
 def studentrecords(request):
     return render(request, 'Adding_App/studentrecords.html')

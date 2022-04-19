@@ -31,7 +31,7 @@
         <form class="d-flex" id="cancelnav">
             <ul class="navbar-nav mr-auto" id="ulid">
                 <li class="nav-item">
-                    <p class="nav-link">STUDENT: TUPC- {{internal_id}} </p>
+                    <p class="nav-link">STUDENT: TUPC- {{data.stud_id}} </p>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{%url 'Adding_App:pic'%}" id="cancelbutton">Cancel</a>
@@ -50,9 +50,9 @@
         <div class="offered">
             <p>Offered Subjects:</p>
             <ol type="1" id="modalBody">
-                {% for data in data %}
+                {% for offerSub in offerSub %}
                 <li>
-                    {{data.sub_code}} {{data.sub_name}}
+                    {{offerSub.sub_code}} {{offerSub.sub_name}}
                 </li>
                 {% endfor %}
             </ol>
@@ -73,21 +73,19 @@
                     <legend>ALL YEAR - ALL SEMESTER</legend>
                     <thead>
                         <th>SUBJECT CODE</th>
-                        <th>SUBJECT NAME</th>
                         <th>GRADES</th>
                         <th>REMARKS</th>
                         <th>ACTION</th>
                     </thead>
                     <tbody id="allsub">
-                        {% for data2 in data2 %}
+                        {% for studentReq in studentReq %}
                         <tr>
-                            <td>{{data2.username}}</td>
-                            <td>{{data2.last_name}}</td>
-                            <td>{{data2.grades}}</td>
-                            <td>{{data2.remarks}}</td>
+                            <td>{{studentReq.sub_code}}</td>
+                            <td>{{studentReq.grades}}</td>
+                            <td>{{studentReq.remarks}}</td>
                             <td>
-                                <a href="/editRemark/{{data2.id}}">Edit</a>
-                                <a href="/deleteRemark/{{data2.id}}">Delete</a>
+                                <a href="/editRemarks/">Edit</a>
+                                <a href="/deleteRemarks/">Delete</a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -120,20 +118,17 @@
   </button>
                     </div>
                     <div class="modal-body">
-                        <form class="needs-validation" onsubmit="msg()" action="/addRemark" method="post">
+                        <form class="needs-validation" onsubmit="msg()" action="/addRemark/{{data.id}}" method="post">
                             {% csrf_token %}
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="stud_id">Student Number</label>
-                                    <input type="number" class="form-control" name="stud_id" id="stud_id" value='{{internal_id}}' disabled>
+                                    <input type="number" class="form-control" name="stud_id" id="stud_id" value='{{data.stud_id}}' disabled>
                                 </div>
+
                                 <div class="col-md-4 mb-3">
-                                    <label for="sub_code">Subject Code</label>
-                                    <input type="text" class="form-control" name="sub_code" id="sub_code" required>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="grade">Grade</label>
-                                    <input type="number" class="form-control" name="grade" id="grade" required>
+                                    <label for="grades">Grade</label>
+                                    <input type="number" class="form-control" name="grades" id="grades" required>
                                 </div>
 
                                 <div class="col-md-4 mb-3">

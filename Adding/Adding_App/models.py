@@ -47,9 +47,7 @@ class all_subjects(models.Model):
 class student_request(models.Model): 
     stud_id = models.ForeignKey(registration, on_delete=models.CASCADE, related_name='+')
     sub_code = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
-    sub_name = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
-    year = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
-    semester = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='+')
+    grades = models.PositiveIntegerField()
     remarks = models.CharField(max_length=100)
 
 

@@ -71,6 +71,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Student Number</th>
                         <th>Student Name</th>
                         <th>Section</th>
                         <th>Email</th>
@@ -79,27 +80,30 @@
                     </tr>
                 </thead>
                 <tbody id=picstudenttable border="1">
-                    <form method='post'>
-                        {% csrf_token %} {% for data in data %}
+                    <form onsubmit="msg()" method='post'>
+                        {% csrf_token %} {% for students in students %}
                         <tr>
 
                             <td>
-                                {{data.id}}
+                                {{students.id}}
                             </td>
                             <td>
-                                {{data.last_name}} {{data.first_name}}
+                                {{students.stud_id}}
                             </td>
                             <td>
-                                {{data.section}}
+                                {{students.last_name}} {{students.first_name}}
                             </td>
                             <td>
-                                {{data.email}}
+                                {{students.section}}
                             </td>
                             <td>
-                                {{data.stud_stats}}
+                                {{students.email}}
                             </td>
                             <td>
-                                <input class="action" type='submit' name='internal_id' value='{{data.stud_id}}'>
+                                {{students.stud_stats}}
+                            </td>
+                            <td>
+                                <a href="/checking/{{students.id}}">Edit</a>
                             </td>
 
                         </tr>
