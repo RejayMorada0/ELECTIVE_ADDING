@@ -138,16 +138,16 @@ def pic(request):
         return render(request, 'Adding_App/checking.html', context1)
     return render(request, 'Adding_App/pic.html', context)
 
-def addRemark(request):
-    if request.method=='POST':
-        sub_code = request.POST.get('sub_code')
-        sub_name = request.POST.get('sub_name')
-
 def checking(request):
     data = all_subjects.objects.filter(offer_stats = 'Offer')
     context = {'data': data}
     print(context)
     return render(request, 'Adding_App/checking.html', context)
+
+def addRemark(request):
+    if request.method=='POST':
+        sub_code = request.POST.get('sub_code')
+        sub_name = request.POST.get('sub_name')
 
 def studentrecords(request):
     return render(request, 'Adding_App/studentrecords.html')
