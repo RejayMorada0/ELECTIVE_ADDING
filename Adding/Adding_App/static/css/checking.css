@@ -170,6 +170,15 @@ td {
     border: solid 1px #319AE4;
 }
 
+.action {
+    background-color: transparent;
+    color: black;
+}
+
+.action:hover {
+    color: #319AE4;
+}
+
 .imgforgrades {
     display: flex;
     justify-content: space-around;

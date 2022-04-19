@@ -23,7 +23,7 @@ urlpatterns = [
     #pic
     path('pic/', views.pic, name='pic'),
     path('checking/', views.checking, name='checking'),
-    path('addRemark', views.addRemark, name='addRemark'),
+    path('addRemark/', views.addRemark, name='addRemark'),
     path('studentrecords/', views.studentrecords, name='studentrecords'),
     #student
     path('student/', views.student, name='student'),

@@ -60,9 +60,10 @@
                     <label>Year Course and Section:</label>
                 </div>
                 <div class="data">
-                    <label id='studentnumber1'>TUPC-{{stud_id}}</label>
-                    <label id='fullname1'>{{first_name}} {{last_name}}</label>
-                    <label id='section1'>{{section}}</label>
+                    {% csrf_token %} {% for data in data %}
+                    <label id='studentnumber1'>TUPC-{{data.stud_id}}</label>
+                    <label id='fullname1'>{{data.first_name}} {{data.last_name}}</label>
+                    <label id='section1'>{{data.section}}</label>
                 </div>
 
             </div>
@@ -72,7 +73,7 @@
                     <label>Status:</label>
                 </div>
                 <div class="statusCenter">
-                    <label id='status1'>{{stud_stats}}</label>
+                    <label id='status1'>{{data.stud_stats}}</label> {% endfor %}
                 </div>
                 {% if stud_stats == 'Approved' %}
                 <form class="form-inline" target="_blank" method="post" action="generate_pdf.php">

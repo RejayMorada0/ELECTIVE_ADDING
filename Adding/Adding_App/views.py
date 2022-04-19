@@ -56,15 +56,12 @@ def logoutUser(request):
 
 #student
 def student(request):
+    data = registration.objects.filter(id = request.user.pk)
+    
     current_user = request.user
     username = current_user.username
-    last_name = current_user.first_name
-    first_name = current_user.last_name
-    stud_id = current_user.stud_id
-    section = current_user.section
     stud_stats = current_user.stud_stats
-    image = current_user.image
-    context = {'first_name' : first_name, 'last_name': last_name, 'stud_id': stud_id, 'section': section, 'stud_stats': stud_stats, 'image':image}
+    context = { 'data': data, 'stud_stats': stud_stats }
     print(context)
     if request.method == 'POST':
         data = registration.objects.get(username=username)
@@ -129,9 +126,16 @@ def update(request,id):
 
 #pic
 def pic(request):
-    data = registration.objects.all()
+    data = registration.objects.filter(userType='STDNT')
     context = {'data': data}
     print(context)
+    if request.method == 'POST':
+        internal_id = request.POST.get('internal_id')
+        instance = registration.objects.get(stud_id=internal_id)
+        print(internal_id)
+        studentrequest = student_request.objects.filter(stud_id = internal_id)
+        context1 = {'studentrequest':studentrequest, 'internal_id': internal_id}
+        return render(request, 'Adding_App/checking.html', context1)
     return render(request, 'Adding_App/pic.html', context)
 
 def addRemark(request):
@@ -140,7 +144,7 @@ def addRemark(request):
         sub_name = request.POST.get('sub_name')
 
 def checking(request):
-    data = all_subjects.objects.filter(offer_stats='Offer')
+    data = all_subjects.objects.filter(offer_stats = 'Offer')
     context = {'data': data}
     print(context)
     return render(request, 'Adding_App/checking.html', context)

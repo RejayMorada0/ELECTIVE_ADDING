@@ -31,7 +31,7 @@
         <form class="d-flex" id="cancelnav">
             <ul class="navbar-nav mr-auto" id="ulid">
                 <li class="nav-item">
-                    <p class="nav-link" id="studentname">STUDENT: email1@gmail.com </p>
+                    <p class="nav-link">STUDENT: TUPC- {{internal_id}} </p>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{%url 'Adding_App:pic'%}" id="cancelbutton">Cancel</a>
@@ -79,15 +79,15 @@
                         <th>ACTION</th>
                     </thead>
                     <tbody id="allsub">
-                        {% for data1 in data1 %}
+                        {% for data2 in data2 %}
                         <tr>
-                            <td>{{data1.sub_code}}</td>
-                            <td>{{data1.sub_name}}</td>
-                            <td>{{data1.grades}}</td>
-                            <td>{{data1.remarks}}</td>
+                            <td>{{data2.username}}</td>
+                            <td>{{data2.last_name}}</td>
+                            <td>{{data2.grades}}</td>
+                            <td>{{data2.remarks}}</td>
                             <td>
-                                <a href="/editRemark/{{data1.id}}">Edit</a>
-                                <a href="/deleteRemark/{{data1.id}}">Delete</a>
+                                <a href="/editRemark/{{data2.id}}">Edit</a>
+                                <a href="/deleteRemark/{{data2.id}}">Delete</a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -185,15 +185,6 @@
                 x.style.display = "none";
             }
         }
-
-
-        // get student email from student cell in index page
-        var id = localStorage.getItem("id");
-        var name = localStorage.getItem("name");
-        document.getElementById("studentname").innerHTML = "Student:" + " " + id + " " + name;
-
-        //trancfer js var in django var
-        document.cookie = "id = " + id;
     </script>
 </body>
 
