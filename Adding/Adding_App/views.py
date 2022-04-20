@@ -132,18 +132,23 @@ def pic(request):
 
 
 def checking(request,id):
+  
     data = registration.objects.get(id=id)
     studentReq = student_request.objects.filter(stud_id=data.id)
     offerSub = all_subjects.objects.filter(offer_stats='Offer')
-    return render(request, 'Adding_App/checking.html',  {'data':data, 'studentReq':studentReq , 'offerSub':offerSub} )
+    subject = all_subjects.objects.all()
+    ids = registration.objects.filter(id=id)
+    return render(request, 'Adding_App/checking.html',  {'subject':subject, 'ids':ids, 'data':data, 'studentReq':studentReq , 'offerSub':offerSub } )
 
 
 def addRemark(request,id):
     data = registration.objects.get(id=id)
     if request.method =='POST':
+        stud_id_id = request.POST.get('stud_id_id')
+        sub_code_id = request.POST.get('sub_code_id')
         grades = request.POST.get('grades')
         remarks = request.POST.get('remarks')
-        data = student_request.objects.create( grades = grades, remarks = remarks)
+        data = student_request.objects.create( stud_id_id = stud_id_id, sub_code_id = sub_code_id, grades = grades, remarks = remarks)
         data.save()
         return redirect('/checking/'+ str(id))
    

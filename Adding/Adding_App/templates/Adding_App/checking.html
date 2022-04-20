@@ -121,14 +121,24 @@
                         <form class="needs-validation" onsubmit="msg()" action="/addRemark/{{data.id}}" method="post">
                             {% csrf_token %}
                             <div class="form-row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="stud_id">Student Number</label>
-                                    <input type="number" class="form-control" name="stud_id" id="stud_id" value='{{data.stud_id}}' disabled>
-                                </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <label for="sub_code">Subject Code</label>
-                                    <input type="text" class="form-control" name="sub_code" id="sub_code" required>
+                                    <label for="ids">IDs</label>
+                                    <select name="stud_id_id" class="custom-select" id="stud_id_id" required>
+                                 
+                                  {% for ids in ids %}
+                                  <option value="{{ids.id}}">{{ids.id}}</option>{% endfor %}
+                                </select>
+                                </div>
+
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="sub_code_id">Subject Code</label>
+                                    <select name="sub_code_id" class="custom-select" id="sub_code_id" required>
+                                  <option selected disabled value="">Choose...</option>
+                                  {% for subject in subject %}
+                                  <option value="{{subject.id}}">{{subject.id}}</option>{% endfor %}
+                                </select>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
