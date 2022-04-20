@@ -1,0 +1,114 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>PIC : Checking of Grades</title>
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/fonts.css">
+    <link rel="stylesheet" href="../../static/css/checking.css">
+
+    <!--ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <link rel="icon" href="../../static/images/tuplogo.png">
+
+</head>
+
+<body onresize="openpage()">
+    <nav class="navbar navbar-expand-lg" id="tupcnav">
+        <img src="../../static/images/tuplogo.png" width="50" height="50" alt="tuplogo">
+
+        <a class="navbar-brand" href="{%url 'Adding_App:pic'%}" id="atech">TECHNOLOGICAL UNIVERSITY <br> OF THE PHILIPPINES</a>
+    </nav>
+
+
+
+
+
+    <section>
+        <form method="post" onsubmit="msg()" action="/update/{{data.id}}">
+            {% csrf_token %}
+            <legend>Update Remarks</legend>
+
+            <div class="form-row">
+
+                <div class="col-md-4 mb-3">
+                    <label for="ids">IDs</label>
+                    <select name="stud_id_id" class="custom-select" id="stud_id_id">
+                 
+                        {% for fil_data in fil_data %}
+                  <option value="{{fil_data.id}}">{{fil_data.id}}</option>{% endfor %}
+                </select>
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+                    <label for="sub_code_id">Subject Code</label>
+                    <select name="sub_code_id" class="custom-select" id="sub_code_id" required>
+                  <option selected disabled value="">Choose...</option>
+                  {% for data in data %}
+                  <option value="{{data.sub_code_id}}">{{data.subject}}</option>{% endfor %}
+                </select>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="grades">Grade</label>
+                    <input type="number" class="form-control" name="grades" id="grades" required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="validationTooltip03">Remarks</label>
+                    <select name="remarks" class="custom-select" id="validationTooltip03" required>
+                  <option selected disabled value="">Choose...</option>
+                  <option value="Passed">Passed</option>
+                  <option value="Failed">Failed</option>
+                  <option value="To Offer">To Offer</option>
+                  
+                </select>
+                </div>
+                <div class="button1">
+                    <button id="logoutbutton">Update</button>
+                </div>
+        </form>
+
+
+    </section>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="../signinlogin/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        function openpage() {
+            var x = document.getElementById("offered");
+            if (window.innerWidth > 1000) {
+                x.style.display = "grid";
+            }
+        }
+
+        function details_hide_show() {
+            var x = document.getElementById("offered");
+            if (x.style.display === "none") {
+                x.style.display = "grid";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

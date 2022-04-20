@@ -105,10 +105,6 @@ def edit(request,id):
 
 def delete(request,id):
     data = all_subjects.objects.get(id=id)
-    return render(request, 'Adding_App/delete.html', {'data':data})
-
-def destroy(request,id):
-    data = all_subjects.objects.get(id=id)
     data.delete()
     return redirect("/head/")
     
@@ -132,7 +128,6 @@ def pic(request):
 
 
 def checking(request,id):
-  
     data = registration.objects.get(id=id)
     studentReq = student_request.objects.filter(stud_id=data.id)
     offerSub = all_subjects.objects.filter(offer_stats='Offer')
@@ -148,11 +143,25 @@ def addRemark(request,id):
         sub_code_id = request.POST.get('sub_code_id')
         grades = request.POST.get('grades')
         remarks = request.POST.get('remarks')
-        data = student_request.objects.create( stud_id_id = stud_id_id, sub_code_id = sub_code_id, grades = grades, remarks = remarks)
+        subject = all_subjects.objects.get(id=sub_code_id)
+        data = student_request.objects.create(stud_id_id = stud_id_id, sub_code_id = sub_code_id, subject = subject.sub_code, grades = grades, remarks = remarks)
         data.save()
         return redirect('/checking/'+ str(id))
    
+def editRemark(request, id):
+    ids = registration.objects.filter(id=id)
+    data= student_request.objects.filter(stud_id=id)
+    print(ids)
+    fil_data = registration.objects.filter(id=id)
+    print(fil_data)
+    return render(request, 'Adding_App/editRemark.html', {'data':data, 'ids':ids, 'fil_data':fil_data})
 
+
+def deleteRemark(request,id):
+    data= student_request.objects.filter(stud_id=id)
+    print(data)
+    data.delete()
+    return redirect('/checking/'+ str(id))
    
 
 def studentrecords(request):

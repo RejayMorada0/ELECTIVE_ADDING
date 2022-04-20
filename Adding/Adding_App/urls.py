@@ -18,12 +18,13 @@ urlpatterns = [
     path('edit/<int:id>', views.edit),
     path('delete/<int:id>', views.delete),
     path('update/<int:id>', views.update),
-    path('destroy/<int:id>', views.destroy),
     path('requestapproval/', views.requestapproval, name='requestapproval'),
     #pic
     path('pic/', views.pic, name='pic'),
     path('checking/<int:id>', views.checking),
     path('addRemark/<int:id>', views.addRemark),
+    path('editRemark/<int:id>', views.editRemark),
+    path('deleteRemark/<int:id>', views.deleteRemark),
     path('studentrecords/', views.studentrecords, name='studentrecords'),
     #student
     path('student/', views.student, name='student'),

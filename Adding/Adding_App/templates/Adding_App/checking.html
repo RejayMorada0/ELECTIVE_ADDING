@@ -34,7 +34,7 @@
                     <p class="nav-link">STUDENT: TUPC- {{data.stud_id}} </p>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{%url 'Adding_App:pic'%}" id="cancelbutton">Cancel</a>
+                    <a class="nav-link" href="{%url 'Adding_App:pic'%}" id="cancelbutton">Back</a>
                 </li>
             </ul>
         </form>
@@ -72,6 +72,7 @@
                 <table>
                     <legend>ALL YEAR - ALL SEMESTER</legend>
                     <thead>
+
                         <th>SUBJECT CODE</th>
                         <th>GRADES</th>
                         <th>REMARKS</th>
@@ -80,12 +81,13 @@
                     <tbody id="allsub">
                         {% for studentReq in studentReq %}
                         <tr>
-                            <td>{{studentReq.sub_code}}</td>
+
+                            <td>{{studentReq.subject}}</td>
                             <td>{{studentReq.grades}}</td>
                             <td>{{studentReq.remarks}}</td>
                             <td>
-                                <a href="/editRemarks/">Edit</a>
-                                <a href="/deleteRemarks/">Delete</a>
+                                <a href="/editRemark/{{data.id}}">Edit</a>
+                                <a href="/deleteRemark/{{data.id}}">Delete</a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -124,8 +126,7 @@
 
                                 <div class="col-md-4 mb-3">
                                     <label for="ids">IDs</label>
-                                    <select name="stud_id_id" class="custom-select" id="stud_id_id" required>
-                                 
+                                    <select name="stud_id_id" class="custom-select" id="stud_id_id">
                                   {% for ids in ids %}
                                   <option value="{{ids.id}}">{{ids.id}}</option>{% endfor %}
                                 </select>
@@ -137,7 +138,7 @@
                                     <select name="sub_code_id" class="custom-select" id="sub_code_id" required>
                                   <option selected disabled value="">Choose...</option>
                                   {% for subject in subject %}
-                                  <option value="{{subject.id}}">{{subject.id}}</option>{% endfor %}
+                                  <option value="{{subject.id}}">{{subject.sub_code}}</option>{% endfor %}
                                 </select>
                                 </div>
 

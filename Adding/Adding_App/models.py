@@ -47,6 +47,7 @@ class all_subjects(models.Model):
 class student_request(models.Model): 
     stud_id = models.ForeignKey(registration, on_delete=models.CASCADE, related_name='ids', verbose_name = 'stud_id')
     sub_code = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='subject', verbose_name = 'sub_code')
+    subject = models.CharField(max_length=100)
     grades = models.PositiveIntegerField()
     remarks = models.CharField(max_length=100)
 
