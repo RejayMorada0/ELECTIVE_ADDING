@@ -27,7 +27,7 @@ class registration(AbstractUser):
     section = models.CharField(max_length=30, choices= section, verbose_name='section')
     stud_id = models.IntegerField(unique=True, verbose_name='stud_id')
     stud_stats = models.CharField(max_length=30, default ='Processing')
-    image = models.ImageField(max_length=100, default ='')
+    image = models.ImageField(max_length=100, default ='', upload_to='images')
     userType = models.CharField(max_length=30, choices= userType, verbose_name='userType', default ='STDNT')
 
 

@@ -65,7 +65,7 @@ def student(request):
     print(context)
     if request.method == 'POST':
         data = registration.objects.get(username=username)
-        data.image = request.POST.get('image')
+        data.image = request.FILES["file"]
         data.stud_stats = 'Requested'
         data.save()
         return redirect('/student') 
@@ -129,11 +129,12 @@ def pic(request):
 
 def checking(request,id):
     data = registration.objects.get(id=id)
+    image = registration.objects.filter(username=data)
     studentReq = student_request.objects.filter(stud_id=data.id)
     offerSub = all_subjects.objects.filter(offer_stats='Offer')
     subject = all_subjects.objects.all()
     ids = registration.objects.filter(id=id)
-    return render(request, 'Adding_App/checking.html',  {'subject':subject, 'ids':ids, 'data':data, 'studentReq':studentReq , 'offerSub':offerSub } )
+    return render(request, 'Adding_App/checking.html',  {'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub } )
 
 
 def addRemark(request,id):

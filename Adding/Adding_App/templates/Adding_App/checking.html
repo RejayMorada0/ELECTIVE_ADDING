@@ -97,15 +97,15 @@
             <div class="imgforgrades">
                 <p>*Attached Files is the grades of the sudents in following academic year and download it to double check the input grades of the students in the system. <br> After you edit the remarks of the student request, submit it and wait for admin's
                     approval. </p>
-                <a download target="_blank" href="../students/upload/<?php echo $image_data['image']; ?>">
-                    <?php echo $image_data['image']; ?> </a>
+                {% for image in image %}
+                <a download target="_blank" href="{{image.image.url}}">Download Image</a>
             </div>
+            <img src="{{data.image.url}}" class="img-fluid" alt="..."> {% endfor %}
         </form>
 
         <form class="needs-validation" method="post">
             <div class="submitbutton">
                 <input class="btn btn-primary" type="submit" id="submitbtn" value="Submit Requests" name="submitAction">
-                <!--<button class="btn btn-primary" type="submit" id="submitbtn">Submit Requests</button>-->
             </div>
         </form>
 
