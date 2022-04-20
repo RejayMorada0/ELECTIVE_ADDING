@@ -145,6 +145,53 @@ section {
     font-weight: bolder;
 }
 
+#FORMFORM {
+    display: grid;
+    justify-items: center;
+}
+
+legend {
+    text-align: center;
+}
+
+.button1 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button1 input {
+    background-color: #319AE4;
+    color: white;
+    border: solid 1px #319AE4;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.button1 input:hover {
+    background-color: white;
+    border: 1px solid #319AE4;
+    color: #319AE4;
+}
+
+#logoutbutton {
+    background-color: #319AE4;
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+}
+
+#logoutbutton:hover {
+    border: 1px solid #319AE4;
+    color: #319AE4;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
 
 /*table*/
 
