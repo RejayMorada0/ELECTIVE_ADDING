@@ -83,7 +83,30 @@ def head(request):
   
 
 def requestapproval(request):
-    return render(request, 'Adding_App/requestapproval.html')
+    q = Q(stud_stats='Waiting For Approval') | Q(stud_stats='Approved')
+    students = registration.objects.filter(q)
+    context={'students': students}
+    return render(request, 'Adding_App/requestapproval.html', context)
+
+def checking1(request,id):
+    data = registration.objects.get(id=id)
+    image = registration.objects.filter(username=data)
+    studentReq = student_request.objects.filter(stud_id=data.id)
+    offerSub = all_subjects.objects.filter(offer_stats='Offer')
+    subject = all_subjects.objects.all()
+    ids = registration.objects.filter(id=id)
+    stud_stats = data.stud_stats
+    print(stud_stats)
+    return render(request, 'Adding_App/checking1.html',  { 'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub, 'stud_stats':stud_stats } )
+
+def adminApprove(request):
+    stud_id = request.POST.get('stud_id')
+    print(stud_id)
+    ids = registration.objects.get(stud_id=stud_id)
+    ids.stud_stats = 'Approved'
+    ids.save()
+    print(ids)
+    return redirect('/requestapproval/')    
 
 #Add Subject
 def addsubject(request):

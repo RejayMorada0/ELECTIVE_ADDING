@@ -59,70 +59,54 @@
 
         <div class="reqapproval">
             <p>REQUEST APPROVAL</p>
-            <form class="needs-validation" method="post">
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label for="validationTooltip01">Student Number</label>
-                        <input type="text" name="stud_id" class="form-control" id="validationTooltip01" required>
 
-                    </div>
+        </div>
 
-                    <div class="remarkbttn">
-                        <input class="btn btn-primary" type="submit" id="Approved" value="Approved" name="Approved">
-                    </div>
-            </form>
-            </div>
-
-            <div class="reqapproval">
-
-                <table>
-                    <thead>
+        <div class="reqapproval">
+            <table>
+                <!--HEAD-->
+                <thead>
+                    <tr>
                         <th>ID</th>
-                        <th>STUDENT NUMBER</th>
-                        <th>SUBJECT CODE</th>
-                        <th>SUBJECT NAME</th>
-                        <th>GRADES</th>
-                        <th>REMARKS</th>
-                    </thead>
-                    <tbody id="fyfs">
-                        <!-- PHP CODE TO FETCH DATA FROM ROWS-->
-                        <?php   // LOOP TILL END OF DATA 
-                        if (!($result && mysqli_num_rows($result) > 0)) {
-                            echo "";
-                        } else {
-                        while($rows=$display_student_req->fetch_assoc())
-                        {
-                    ?>
+                        <th>Student Number</th>
+                        <th>Student Name</th>
+                        <th>Section</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id=submitreqtable>
+                    <form onsubmit="msg()" method='post'>
+                        {% csrf_token %} {% for students in students %}
                         <tr>
-                            <!--FETCHING DATA FROM EACH 
-                            ROW OF EVERY COLUMN-->
                             <td>
-                                <?php echo $rows['trans_id'];?>
+                                {{students.id}}
                             </td>
                             <td>
-                                <?php echo $rows['stud_id'];?>
+                                {{students.stud_id}}
                             </td>
                             <td>
-                                <?php echo $rows['sub_code'];?>
+                                {{students.last_name}} {{students.first_name}}
                             </td>
                             <td>
-                                <?php echo $rows['sub_name'];?>
+                                {{students.section}}
                             </td>
                             <td>
-                                <?php echo $rows['grades'];?>
+                                {{students.email}}
                             </td>
                             <td>
-                                <?php echo $rows['remarks'];?>
+                                {{students.stud_stats}}
                             </td>
-                        </tr>
-                        <?php
-                        }
-                        }
-                    ?>
-                    </tbody>
+                            <td>
+                                <a href="/checking1/{{students.id}}">Edit</a>
+                            </td>
 
-                </table>
-            </div>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
 
     </section>

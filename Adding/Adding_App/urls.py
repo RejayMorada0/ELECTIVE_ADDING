@@ -19,9 +19,11 @@ urlpatterns = [
     path('edit/<int:id>', views.edit),
     path('delete/<int:id>', views.delete),
     path('requestapproval/', views.requestapproval, name='requestapproval'),
+    path('adminApprove/', views.adminApprove, name='adminApprove'),
     #pic
     path('pic/', views.pic, name='pic'),
     path('checking/<int:id>', views.checking),
+    path('checking1/<int:id>', views.checking1),
     path('addRemark/<int:id>', views.addRemark),
     path('editRemark/<int:id>', views.editRemark),
     path('deleteRemark/<int:id>', views.deleteRemark),

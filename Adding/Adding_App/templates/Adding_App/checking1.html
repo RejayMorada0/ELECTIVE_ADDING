@@ -1,0 +1,140 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>PIC : Checking of Grades</title>
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/fonts.css">
+    <link rel="stylesheet" href="../../static/css/checking1.css">
+
+    <!--ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <link rel="icon" href="../../static/images/tuplogo.png">
+
+</head>
+
+<body onresize="openpage()">
+    <nav class="navbar navbar-expand-lg" id="tupcnav">
+        <img src="../../static/images/tuplogo.png" width="50" height="50" alt="tuplogo">
+
+        <a class="navbar-brand" href="{%url 'Adding_App:pic'%}" id="atech">TECHNOLOGICAL UNIVERSITY <br> OF THE PHILIPPINES</a>
+
+        <form class="d-flex" id="cancelnav">
+            <ul class="navbar-nav mr-auto" id="ulid">
+                <li class="nav-item">
+                    <p class="nav-link">STUDENT: TUPC- {{data.stud_id}} </p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'Adding_App:requestapproval'%}" id="cancelbutton">Back</a>
+                </li>
+            </ul>
+        </form>
+
+
+        <i class="bi bi-journal" onclick="details_hide_show()"></i>
+
+
+    </nav>
+
+
+    <section id="offered">
+        <div class="offered">
+            <p>Offered Subjects:</p>
+            <ol type="1" id="modalBody">
+                {% for offerSub in offerSub %}
+                <li>
+                    {{offerSub.sub_code}} {{offerSub.sub_name}}
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+        <a class="nav-link" href="c{%url 'Adding_App:requestapproval'%}" id="cancelbutton1">Cancel</a>
+    </section>
+
+    <section>
+        <div class="grades">
+            <p>CHECKING OF GRADES</p>
+        </div>
+
+        <form>
+            <div class="tableborder">
+                <table>
+                    <legend>ALL YEAR - ALL SEMESTER</legend>
+                    <thead>
+
+                        <th>SUBJECT CODE</th>
+                        <th>GRADES</th>
+                        <th>REMARKS</th>
+
+                    </thead>
+                    <tbody id="allsub">
+                        {% for studentReq in studentReq %}
+                        <tr>
+
+                            <td>{{studentReq.subject}}</td>
+                            <td>{{studentReq.grades}}</td>
+                            <td>{{studentReq.remarks}}</td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="imgforgrades">
+                <p>*Attached Files is the grades of the sudents in following academic year and download it to double check the input grades of the students in the system. <br> After you edit the remarks of the student request, submit it and wait for admin's
+                    approval. </p>
+                {% for image in image %}
+                <a download target="_blank" href="{{image.image.url}}">Download Image</a>
+            </div>
+            <img src="{{data.image.url}}" class="img-fluid" alt="..."> {% endfor %}
+        </form>
+
+        <form class="needs-validation" method="post" action="/adminApprove/">
+            {% csrf_token %}
+            <div class="submitbutton">
+                {% if stud_stats == 'Waiting For Approval' %}
+                <input type="text" name="stud_id" id="stud_id" value="{{data.stud_id}}" hidden>
+                <input class="btn btn-primary" type="submit" id="submitbtn" value="Approve" name="submitAction"> {% endif %}
+            </div>
+        </form>
+    </section>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="../signinlogin/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        function openpage() {
+            var x = document.getElementById("offered");
+            if (window.innerWidth > 1000) {
+                x.style.display = "grid";
+            }
+        }
+
+        function details_hide_show() {
+            var x = document.getElementById("offered");
+            if (x.style.display === "none") {
+                x.style.display = "grid";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
