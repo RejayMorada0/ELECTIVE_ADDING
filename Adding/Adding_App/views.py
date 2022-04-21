@@ -173,6 +173,12 @@ def deleteRemark(request,id):
     return redirect('/checking/'+ str(id))
 
 def picRequest(request):
+    stud_id = request.POST.get('stud_id')
+    print(stud_id)
+    ids = registration.objects.get(stud_id=stud_id)
+    ids.stud_stats = 'Waiting For Approval'
+    ids.save()
+    print(ids)
     return redirect('/studentrecords/')
 
 def studentrecords(request):

@@ -106,6 +106,7 @@
         <form class="needs-validation" method="post" action="/picRequest/">
             {% csrf_token %}
             <div class="submitbutton">
+                <input type="text" name="stud_id" id="stud_id" value="{{data.stud_id}}" hidden>
                 <input class="btn btn-primary" type="submit" id="submitbtn" value="Submit Requests" name="submitAction">
             </div>
         </form>

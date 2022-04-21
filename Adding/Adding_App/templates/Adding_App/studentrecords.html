@@ -63,44 +63,30 @@
                     <!--HEAD-->
                     <thead>
                         <tr>
-                            <th>Transaction ID</th>
-                            <th>Student Number</th>
-                            <th>Request Subject</th>
-                            <th>Status</th>
+                            <th>SUBJECT CODE</th>
+                            <th>GRADES</th>
+                            <th>REMARKS</th>
+                            <th>ACTION</th>
                         </tr>
                     </thead>
                     <tbody id=submitreqtable>
-                        <!-- PHP CODE TO FETCH DATA FROM ROWS-->
-                        <?php   // LOOP TILL END OF DATA
-                            if (!($result && mysqli_num_rows($result) > 0)) {
-                                echo "";
-                            } else {
-                            while($rows=$display_student_req->fetch_assoc())
-                            {
-                        ?>
 
                         <tr>
-                            <!--FETCHING DATA FROM EACH 
-                                ROW OF EVERY COLUMN-->
+
                             <td>
-                                <?php echo $rows['trans_id'];?>
+
                             </td>
                             <td>
-                                <?php echo $rows['stud_id'];?>
+
                             </td>
                             <td>
-                                <?php echo $rows['sub_code'];?>
-                                <?php echo $rows['sub_name'];?>
+
                             </td>
                             <td>
-                                <?php echo $rows['remarks'];?>
+
                             </td>
                         </tr>
 
-                        <?php
-                            }
-                            }
-                        ?>
                     </tbody>
                 </table>
             </div>
