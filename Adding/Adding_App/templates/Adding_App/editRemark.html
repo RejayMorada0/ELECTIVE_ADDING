@@ -34,17 +34,16 @@
 
 
     <section>
-        <form method="post" onsubmit="msg()" action="/update/{{data.id}}">
-            {% csrf_token %}
+        <form method="post" onsubmit="msg()" action="">
             <legend>Update Remarks</legend>
-
+            {% csrf_token %}
             <div class="form-row" id="FORMFORM">
                 <div class="col-md-4 mb-3">
                     <label for="ids">IDs</label>
                     <select name="stud_id_id" class="custom-select" id="stud_id_id">
                  
                         {% for fil_data in fil_data %}
-                  <option value="{{fil_data.id}}">{{fil_data.id}}</option>{% endfor %}
+                  <option  value="{{fil_data.id}}">{{fil_data.id}}</option>{% endfor %}
                 </select>
                 </div>
 
@@ -74,8 +73,7 @@
                 </select>
                 </div>
                 <div class="button1">
-                    <button id="logoutbutton">Update</button>
-                    <a class="nav-link" href="/editRemark/{{data.id}}" id="logoutbutton">Cancel</a>
+                    <button id="logoutbutton">Update</button> {% for ids in ids %}<a class="nav-link" href="/checking/{{ids.id}}" id="logoutbutton">Cancel</a>{% endfor %}
                 </div>
         </form>
 

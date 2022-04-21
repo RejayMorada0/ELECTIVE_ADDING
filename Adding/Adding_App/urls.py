@@ -18,7 +18,6 @@ urlpatterns = [
     path('addAction', views.addAction, name='addAction'),
     path('edit/<int:id>', views.edit),
     path('delete/<int:id>', views.delete),
-    path('update/<int:id>', views.update),
     path('requestapproval/', views.requestapproval, name='requestapproval'),
     #pic
     path('pic/', views.pic, name='pic'),

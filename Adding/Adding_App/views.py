@@ -101,6 +101,15 @@ def addAction(request):
 
 def edit(request,id):
     data = all_subjects.objects.get(id=id)
+    if request.method =='POST':
+        data1 = all_subjects.objects.get(id=id)
+        data1.sub_code = request.POST.get('sub_code')
+        data1.sub_name = request.POST.get('sub_name')
+        data1.year = request.POST.get('year')
+        data1.semester = request.POST.get('semester')
+        data1.offer_stats = request.POST.get('offer_stats')
+        data1.save()
+        return redirect('/head') 
     return render(request, 'Adding_App/edit.html', {'data':data})
 
 def delete(request,id):
@@ -108,17 +117,6 @@ def delete(request,id):
     data.delete()
     return redirect("/head/")
     
-def update(request,id):
-    data = all_subjects.objects.get(id=id)
-    data.sub_code = request.POST.get('sub_code')
-    data.sub_name = request.POST.get('sub_name')
-    data.year = request.POST.get('year')
-    data.semester = request.POST.get('semester')
-    data.offer_stats = request.POST.get('offer_stats')
-    data.save()
-    return redirect('/head') 
-
-
 #pic
 def pic(request):
     students = registration.objects.all()
@@ -155,6 +153,16 @@ def editRemark(request, id):
     print(ids)
     fil_data = registration.objects.filter(id=id)
     print(fil_data)
+    if request.method =='POST':
+        sub_code_id = request.POST.get('sub_code_id')
+        data2= student_request.objects.get(sub_code_id=sub_code_id, stud_id=id)
+        print(data2)
+        data2.stud_id_id = request.POST.get('stud_id_id')
+        data2.sub_code_id = request.POST.get('sub_code_id')
+        data2.grades = request.POST.get('grades')
+        data2.remarks = request.POST.get('remarks')
+        data2.save()
+        return redirect('/checking/'+ str(id))
     return render(request, 'Adding_App/editRemark.html', {'data':data, 'ids':ids, 'fil_data':fil_data})
 
 
