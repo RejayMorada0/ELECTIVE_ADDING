@@ -55,7 +55,12 @@
 
         <section>
             <div class="titlepage">
-                STUDENT RECORDS
+                WELCOME, PERSON IN CHARGE!
+
+            </div>
+            <div class="studreqtxt">
+                <p>STUDENT RECORDS</p>
+                <a>*Student Requests where the request status is Waiting For Approval and Approved.</a>
             </div>
 
             <div class="tableborder">
@@ -73,31 +78,33 @@
                         </tr>
                     </thead>
                     <tbody id=submitreqtable>
+                        <form onsubmit="msg()" method='post'>
+                            {% csrf_token %} {% for students in students %}
+                            <tr>
+                                <td>
+                                    {{students.id}}
+                                </td>
+                                <td>
+                                    {{students.stud_id}}
+                                </td>
+                                <td>
+                                    {{students.last_name}} {{students.first_name}}
+                                </td>
+                                <td>
+                                    {{students.section}}
+                                </td>
+                                <td>
+                                    {{students.email}}
+                                </td>
+                                <td>
+                                    {{students.stud_stats}}
+                                </td>
+                                <td>
+                                    <a href="/checking/{{students.id}}">View</a>
+                                </td>
 
-                        <tr>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                        </tr>
-
+                            </tr>
+                            {% endfor %}
                     </tbody>
                 </table>
             </div>

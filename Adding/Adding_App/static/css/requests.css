@@ -86,6 +86,10 @@ section {
     font-weight: bold;
 }
 
+.requesttxt a {
+    color: #319AE4;
+}
+
 
 /*table*/
 
@@ -159,6 +163,9 @@ table a:hover {
         padding-top: 20px;
         padding-left: 10px;
         padding-right: 10px;
+    }
+    .requesttxt a {
+        color: #319AE4;
     }
 }
 

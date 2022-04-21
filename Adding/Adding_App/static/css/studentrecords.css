@@ -76,6 +76,16 @@ section {
     font-weight: bold;
 }
 
+.studreqtxt {
+    display: grid;
+}
+
+.studreqtxt p {
+    padding-top: 2%;
+    height: 100%;
+    font-weight: bold;
+}
+
 
 /*table*/
 
@@ -129,6 +139,24 @@ td {
         padding: 20px 20px 20px 20px;
         border-radius: 10px;
         font-weight: bold;
+    }
+    .studreqtxt {
+        display: grid;
+        height: 30px;
+        margin-top: 10px;
+        margin-bottom: 120px;
+    }
+    .studreqtxt p {
+        width: 100%;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .studreqtxt a {
+        color: #319AE4;
     }
 }
 

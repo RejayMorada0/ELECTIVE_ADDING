@@ -62,8 +62,8 @@
 
         <div class="requesttxt">
             <p>REQUESTS:</p>
+            <a>*Student Requests where the request status is Processing and Requested.</a>
         </div>
-
 
 
         <div class="tableborder">
@@ -83,7 +83,6 @@
                     <form onsubmit="msg()" method='post'>
                         {% csrf_token %} {% for students in students %}
                         <tr>
-
                             <td>
                                 {{students.id}}
                             </td>

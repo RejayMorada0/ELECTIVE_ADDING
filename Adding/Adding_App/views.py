@@ -8,6 +8,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import StudentRegistration, ReceiverRegistration
 from django.contrib.auth import authenticate, login, logout
 
+from django.db.models import Q
+
 import mysql.connector as sql
 
 
@@ -57,7 +59,6 @@ def logoutUser(request):
 #student
 def student(request):
     data = registration.objects.filter(id = request.user.pk)
-    
     current_user = request.user
     username = current_user.username
     stud_stats = current_user.stud_stats
@@ -119,10 +120,9 @@ def delete(request,id):
     
 #pic
 def pic(request):
-    students = registration.objects.all()
-    context={'students': students}
-    print(context)
-    return render(request, 'Adding_App/pic.html', context)
+    # q = Q(stud_stats='Processing') | Q(stud_stats='Requested')
+    students = registration.objects.filter(stud_stats='Requested')
+    return render(request, 'Adding_App/pic.html', {'students': students})
 
 
 def checking(request,id):
@@ -132,7 +132,9 @@ def checking(request,id):
     offerSub = all_subjects.objects.filter(offer_stats='Offer')
     subject = all_subjects.objects.all()
     ids = registration.objects.filter(id=id)
-    return render(request, 'Adding_App/checking.html',  {'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub } )
+    stud_stats = data.stud_stats
+    print(stud_stats)
+    return render(request, 'Adding_App/checking.html',  { 'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub, 'stud_stats':stud_stats } )
 
 
 def addRemark(request,id):
@@ -182,7 +184,12 @@ def picRequest(request):
     return redirect('/studentrecords/')
 
 def studentrecords(request):
-    return render(request, 'Adding_App/studentrecords.html')
+    q = Q(stud_stats='Waiting For Approval') | Q(stud_stats='Approved')
+    students = registration.objects.filter(q)
+    # students = registration.objects.filter(stud_stats='Processing''Requested')
+    context={'students': students}
+    print(context)
+    return render(request, 'Adding_App/studentrecords.html', context)
 
 
 

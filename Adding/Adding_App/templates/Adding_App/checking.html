@@ -34,7 +34,12 @@
                     <p class="nav-link">STUDENT: TUPC- {{data.stud_id}} </p>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{%url 'Adding_App:pic'%}" id="cancelbutton">Back</a>
+                    {% if stud_stats == 'Requested' %}
+                    <a class="nav-link" href="{%url 'Adding_App:pic'%}" id="cancelbutton">Back</a>{% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if stud_stats == 'Waiting For Approval' or stud_stats == 'Approved' %}
+                    <a class="nav-link" href="{%url 'Adding_App:studentrecords'%}" id="cancelbutton">Back</a>{% endif %}
                 </li>
             </ul>
         </form>
@@ -57,14 +62,17 @@
                 {% endfor %}
             </ol>
         </div>
-        <a class="nav-link" href="c{%url 'Adding_App:pic'%}" id="cancelbutton1">Cancel</a>
+        {% if stud_stats == 'Requested' %}
+        <a class="nav-link" href="c{%url 'Adding_App:pic'%}" id="cancelbutton1">Cancel</a> {% endif %} {% if stud_stats == 'Waiting For Approval' or stud_stats == 'Approved' %}
+        <a class="nav-link" href="c{%url 'Adding_App:studentrecords'%}" id="cancelbutton1">Cancel</a>{% endif %}
     </section>
 
 
     <section>
         <div class="grades">
             <p>CHECKING OF GRADES</p>
-            <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color:black; background-color: white; border: 1px solid black;">+ add subject</a>
+            {% if stud_stats == 'Requested' %}
+            <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="color:black; background-color: white; border: 1px solid black;">+ add subject</a> {% endif %}
         </div>
 
         <form>
@@ -106,8 +114,9 @@
         <form class="needs-validation" method="post" action="/picRequest/">
             {% csrf_token %}
             <div class="submitbutton">
+                {% if stud_stats == 'Requested' %}
                 <input type="text" name="stud_id" id="stud_id" value="{{data.stud_id}}" hidden>
-                <input class="btn btn-primary" type="submit" id="submitbtn" value="Submit Requests" name="submitAction">
+                <input class="btn btn-primary" type="submit" id="submitbtn" value="Submit Requests" name="submitAction"> {% endif %}
             </div>
         </form>
 
