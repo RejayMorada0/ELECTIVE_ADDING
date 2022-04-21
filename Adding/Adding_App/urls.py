@@ -25,6 +25,7 @@ urlpatterns = [
     path('addRemark/<int:id>', views.addRemark),
     path('editRemark/<int:id>', views.editRemark),
     path('deleteRemark/<int:id>', views.deleteRemark),
+    path('picRequest/', views.picRequest, name='picRequest'),
     path('studentrecords/', views.studentrecords, name='studentrecords'),
     #student
     path('student/', views.student, name='student'),

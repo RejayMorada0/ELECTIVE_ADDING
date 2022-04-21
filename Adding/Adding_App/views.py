@@ -155,13 +155,13 @@ def editRemark(request, id):
     print(fil_data)
     if request.method =='POST':
         sub_code_id = request.POST.get('sub_code_id')
-        data2= student_request.objects.get(sub_code_id=sub_code_id, stud_id=id)
-        print(data2)
-        data2.stud_id_id = request.POST.get('stud_id_id')
-        data2.sub_code_id = request.POST.get('sub_code_id')
-        data2.grades = request.POST.get('grades')
-        data2.remarks = request.POST.get('remarks')
-        data2.save()
+        data1= student_request.objects.get(sub_code_id=sub_code_id, stud_id=id)
+        print(data1)
+        data1.stud_id_id = request.POST.get('stud_id_id')
+        data1.sub_code_id = request.POST.get('sub_code_id')
+        data1.grades = request.POST.get('grades')
+        data1.remarks = request.POST.get('remarks')
+        data1.save()
         return redirect('/checking/'+ str(id))
     return render(request, 'Adding_App/editRemark.html', {'data':data, 'ids':ids, 'fil_data':fil_data})
 
@@ -171,9 +171,12 @@ def deleteRemark(request,id):
     print(data)
     data.delete()
     return redirect('/checking/'+ str(id))
-   
+
+def picRequest(request):
+    return redirect('/studentrecords/')
 
 def studentrecords(request):
     return render(request, 'Adding_App/studentrecords.html')
+
 
 

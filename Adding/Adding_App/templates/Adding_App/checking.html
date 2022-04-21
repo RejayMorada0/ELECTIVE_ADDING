@@ -103,7 +103,8 @@
             <img src="{{data.image.url}}" class="img-fluid" alt="..."> {% endfor %}
         </form>
 
-        <form class="needs-validation" method="post">
+        <form class="needs-validation" method="post" action="/picRequest/">
+            {% csrf_token %}
             <div class="submitbutton">
                 <input class="btn btn-primary" type="submit" id="submitbtn" value="Submit Requests" name="submitAction">
             </div>
