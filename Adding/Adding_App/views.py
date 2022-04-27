@@ -7,6 +7,8 @@ from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from .forms import StudentRegistration, ReceiverRegistration
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
 
 from django.db.models import Q
 
@@ -57,6 +59,7 @@ def logoutUser(request):
     return redirect('/index')
 
 #student
+@login_required(login_url='/index')
 def student(request):
     data = registration.objects.filter(id = request.user.pk)
     current_user = request.user
@@ -73,6 +76,7 @@ def student(request):
     return render(request, 'Adding_App/student.html',context)
 
 #Head
+@login_required(login_url='/index')
 def head(request):
     data = all_subjects.objects.all()
     context={
@@ -80,14 +84,16 @@ def head(request):
     }
     print(context)
     return render(request, 'Adding_App/head.html',context)
-  
 
+
+@login_required(login_url='/index')
 def requestapproval(request):
     q = Q(stud_stats='Waiting For Approval') | Q(stud_stats='Approved')
     students = registration.objects.filter(q)
     context={'students': students}
     return render(request, 'Adding_App/requestapproval.html', context)
 
+@login_required(login_url='/index')
 def checking1(request,id):
     data = registration.objects.get(id=id)
     image = registration.objects.filter(username=data)
@@ -99,6 +105,7 @@ def checking1(request,id):
     print(stud_stats)
     return render(request, 'Adding_App/checking1.html',  { 'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub, 'stud_stats':stud_stats } )
 
+@login_required(login_url='/index')
 def adminApprove(request):
     stud_id = request.POST.get('stud_id')
     print(stud_id)
@@ -109,9 +116,7 @@ def adminApprove(request):
     return redirect('/requestapproval/')    
 
 #Add Subject
-def addsubject(request):
-    return render(request, 'Adding_App/addsubject.html')
-
+@login_required(login_url='/index')
 def addAction(request):
     if request.method=='POST':
         sub_code = request.POST.get('sub_code')
@@ -123,6 +128,8 @@ def addAction(request):
         data.save()
         return redirect('/head')
 
+
+@login_required(login_url='/index')
 def edit(request,id):
     data = all_subjects.objects.get(id=id)
     if request.method =='POST':
@@ -142,12 +149,14 @@ def delete(request,id):
     return redirect("/head/")
     
 #pic
+@login_required(login_url='/index')
 def pic(request):
     # q = Q(stud_stats='Processing') | Q(stud_stats='Requested')
     students = registration.objects.filter(stud_stats='Requested')
     return render(request, 'Adding_App/pic.html', {'students': students})
 
 
+@login_required(login_url='/index')
 def checking(request,id):
     data = registration.objects.get(id=id)
     image = registration.objects.filter(username=data)
@@ -160,6 +169,7 @@ def checking(request,id):
     return render(request, 'Adding_App/checking.html',  { 'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub, 'stud_stats':stud_stats } )
 
 
+@login_required(login_url='/index')
 def addRemark(request,id):
     data = registration.objects.get(id=id)
     if request.method =='POST':
@@ -171,7 +181,8 @@ def addRemark(request,id):
         data = student_request.objects.create(stud_id_id = stud_id_id, sub_code_id = sub_code_id, subject = subject.sub_code, grades = grades, remarks = remarks)
         data.save()
         return redirect('/checking/'+ str(id))
-   
+
+@login_required(login_url='/index')   
 def editRemark(request, id):
     ids = registration.objects.filter(id=id)
     data= student_request.objects.filter(stud_id=id)
@@ -206,6 +217,7 @@ def picRequest(request):
     print(ids)
     return redirect('/studentrecords/')
 
+@login_required(login_url='/index')
 def studentrecords(request):
     q = Q(stud_stats='Waiting For Approval') | Q(stud_stats='Approved')
     students = registration.objects.filter(q)
