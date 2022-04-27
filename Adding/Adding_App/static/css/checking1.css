@@ -22,8 +22,8 @@ a:focus {
     top: 0;
     position: sticky;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
     background-color: white;
     z-index: 100;
 }
@@ -64,7 +64,7 @@ a:focus {
 
 section {
     width: 100%;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 10% 20px 10%;
 }
 
 .offered {
@@ -228,8 +228,7 @@ td {
 
 .imgforgrades {
     display: flex;
-    justify-content: space-around;
-    padding: 20px 40px 20px 40px;
+    justify-content: center;
 }
 
 .imgforgrades p,
@@ -401,4 +400,21 @@ a {
         width: 100%;
         justify-content: flex-end;
     }
+    .imgforgrades {
+        display: flex;
+        justify-content: flex-start;
+        /* padding: 20px 40px 20px 40px; */
+    }
+}
+
+.gradeimage {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.gradeimage img {
+    width: 500px;
+    height: auto;
 }

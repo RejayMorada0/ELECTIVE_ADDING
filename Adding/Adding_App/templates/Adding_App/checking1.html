@@ -49,13 +49,13 @@
     <section id="offered">
         <div class="offered">
             <p>Offered Subjects:</p>
-            <ol type="1" id="modalBody">
-                {% for offerSub in offerSub %}
+            {% for offerSub in offerSub %}
+            <ul style="list-style-type:disc" id="modalBody">
                 <li>
                     {{offerSub.sub_code}} {{offerSub.sub_name}}
                 </li>
-                {% endfor %}
-            </ol>
+            </ul>
+            {% endfor %}
         </div>
         <a class="nav-link" href="c{%url 'Adding_App:requestapproval'%}" id="cancelbutton1">Cancel</a>
     </section>
@@ -92,10 +92,14 @@
             <div class="imgforgrades">
                 <p>*Attached Files is the grades of the sudents in following academic year and download it to double check the input grades of the students in the system. <br> After you edit the remarks of the student request, submit it and wait for admin's
                     approval. </p>
-                {% for image in image %}
-                <a download target="_blank" href="{{image.image.url}}">Download Image</a>
+
+
             </div>
-            <img src="{{data.image.url}}" class="img-fluid" alt="..."> {% endfor %}
+            <div class="gradeimage">
+                {% for image in image %}
+                <img src="{{data.image.url}}" class="img-fluid" alt="..."> {% endfor %}
+            </div>
+
         </form>
 
         <form class="needs-validation" method="post" action="/adminApprove/">
