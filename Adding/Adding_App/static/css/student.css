@@ -23,8 +23,8 @@ a:focus {
     top: 0;
     position: sticky;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
     background-color: white;
     z-index: 100;
 }
@@ -102,7 +102,7 @@ a:focus {
 section {
     min-height: 10vh;
     width: 100%;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 20% 20px 20%;
 }
 
 .studentinfostatus {
@@ -172,9 +172,12 @@ section {
 
 #editGrade {
     border: 0;
-    border-radius: 0;
+    border-radius: 10px;
     background: none;
-    color: #E2435E;
+    color: white;
+    background-color: #E2435E;
+    width: 300px;
+    height: 40px;
 }
 
 #myTab {
@@ -272,9 +275,21 @@ tr {
 }
 
 .imgforgrades {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
     padding: 20px 40px 20px 40px;
+    height: 390px;
+}
+
+#file {
+    height: fit-content;
+    width: fit-content;
+    justify-self: center;
+}
+
+#viewimg {
+    width: auto;
+    height: 300px;
+    justify-self: center;
 }
 
 .imgforgrades p {
@@ -286,6 +301,8 @@ tr {
 .submitbutton {
     display: grid;
     justify-content: end;
+    height: 70px;
+    align-items: center;
 }
 
 #submitbtn {
@@ -397,4 +414,30 @@ tr {
         display: flex;
         justify-content: flex-end;
     }
+}
+
+
+/* bagong dagdag */
+
+#formnirequestnew {
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+#editGrade {
+    width: 100%;
+}
+
+.imagecontainer {
+    border: 1px solid #E2435E;
+    height: 500px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.imagecontainer form {
+    height: 100%;
 }

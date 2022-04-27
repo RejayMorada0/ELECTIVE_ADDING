@@ -94,39 +94,49 @@
 
     <section>
         <div class="subject">
-            <p>REQUEST OF SUBJECT</p>
-            {% if stud_stats == 'Approved' %}
-            <form method="post">
-                <input type="submit" value="Request New" id="editGrade" name="editAction">
-            </form>
-            {% endif %}
-        </div>
+            <p>REQUEST FOR ADDING OF SUBJECT</p>
 
-        <div>
+        </div>
+        {% if stud_stats == 'Approved'%}
+        <form method="post" id="formnirequestnew">
+            {% csrf_token %}
+            <input type="submit" value="Request New" id="editGrade" onclick="shabu()" name="editAction">
+        </form>
+        {% endif %}
+
+
+        <div class="imagecontainer">
 
             {% if stud_stats == 'Processing' %}
             <form method="post" enctype="multipart/form-data" name="file">
                 {% csrf_token %}
                 <div class="imgforgrades">
-                    <p>*Before submitting your request, please include in the photo your previous grades.</p>
+                    <img src="../../static/images/icons8-add-image-96 (1).png" alt="" id="viewimg">
                     <input type="file" name="file" id="file" onchange="readURL(this);" required>
                 </div>
 
                 <div class="submitbutton">
                     <input type="submit" value="SUBMIT REQUEST" id="submitbtn" name="submitAction">
                 </div>
-            </form>
-            {% endif %}
 
+
+            </form>
+            {% endif %} {% if stud_stats != 'Processing' %}
             <div>
-                {% if stud_stats != 'Processing' %}
                 <div class="imgforgrades">
-                    <p>*Submiited picture of your grade is attached here.</p>
+
                     {% for data in data %}
-                    <a download target="_blank" href="{{data.image.url}}">Download Image</a>
+                    <div class="imgforgrades">
+                        <p>*Submitted picture of your grade is attached here.</p>
+                        <img src="{{data.image.url}}" alt="" id="viewimg">
+
+                    </div> {% endfor %} {% endif %}
                 </div>
-                <img src="{{data.image.url}}" class="img-fluid" alt="..."> {% endfor %} {% endif %}
+
             </div>
+            {% if stud_stats == 'Processing' %}
+            <p style="color: #E2435E;">*Before submitting your request, please include in the photo your previous grades.</p>
+            {% endif %}
     </section>
 
 
@@ -164,6 +174,32 @@
         var id = document.getElementById("studentnumber1").innerHTML
             //trancfer js var in php var
         document.cookie = "id = " + id;
+
+        //new edit
+        function shabu() {
+            var x = document.getElementsByClassName("imagecontainer");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        };
+
+        $("input").change(function(e) {
+
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+
+                var file = e.originalEvent.srcElement.files[i];
+
+                var img = document.getElementById("viewimg");
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    img.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+
+            }
+        });
     </script>
 
 </body>
