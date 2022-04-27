@@ -245,6 +245,8 @@ a {
 .submitbutton {
     display: grid;
     justify-content: end;
+    align-items: center;
+    height: 70px;
 }
 
 #submitbtn {

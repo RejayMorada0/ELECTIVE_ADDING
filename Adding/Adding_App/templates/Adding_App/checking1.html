@@ -97,7 +97,7 @@
             </div>
             <div class="gradeimage">
                 {% for image in image %}
-                <img src="{{data.image.url}}" class="img-fluid" alt="..."> {% endfor %}
+                <img src="{{data.image.url}}" class="img-fluid" alt="..." onclick="window.open('{{data.image.url}}');" download> {% endfor %}
             </div>
 
         </form>
