@@ -84,7 +84,10 @@
                         <th>SUBJECT CODE</th>
                         <th>GRADES</th>
                         <th>REMARKS</th>
+                        {% if stud_stats != 'Waiting For Approval' and stud_stats != 'Approved' %}
                         <th>ACTION</th>
+                        {% endif %}
+
                     </thead>
                     <tbody id="allsub">
                         {% for studentReq in studentReq %}
@@ -93,10 +96,12 @@
                             <td>{{studentReq.subject}}</td>
                             <td>{{studentReq.grades}}</td>
                             <td>{{studentReq.remarks}}</td>
+                            {% if stud_stats != 'Waiting For Approval' and stud_stats != 'Approved' %}
                             <td>
                                 <a href="/editRemark/{{data.id}}">Edit</a>
                                 <a href="/deleteRemark/{{data.id}}">Delete</a>
                             </td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
