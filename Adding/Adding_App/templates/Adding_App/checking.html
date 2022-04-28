@@ -108,12 +108,12 @@
                 </table>
             </div>
             <div class="imgforgrades">
-                <p>*Attached Files is the grades of the sudents in following academic year and download it to double check the input grades of the students in the system. <br> After you edit the remarks of the student request, submit it and wait for admin's
-                    approval. </p>
-                {% for image in image %}
-                <a download target="_blank" href="{{image.image.url}}">Download Image</a>
+                <p>*Attached Files is the grades of the sudents in following academic year and download it to double check the input grades of the students in the system. <br> After you check the remarks of the student request, you may approved it now.</p>
             </div>
-            <img src="{{data.image.url}}" class="img-fluid" alt="..."> {% endfor %}
+            <div class="gradeimage">
+                {% for image in image %}
+                <img src="{{data.image.url}}" class="img-fluid" alt="..." onclick="window.open('{{data.image.url}}');" download> {% endfor %}
+            </div>
         </form>
 
         <form class="needs-validation" method="post" action="/picRequest/">
