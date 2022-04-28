@@ -199,29 +199,27 @@ def addRemark(request,id):
 @login_required(login_url='/index')   
 def editRemark(request, id):
     if request.user.is_authenticated and request.user.userType == 'PIC':
-        ids = registration.objects.filter(id=id)
-        data= student_request.objects.filter(stud_id=id)
-        print(ids)
-        fil_data = registration.objects.filter(id=id)
-        print(fil_data)
+        data= student_request.objects.filter(id=id)
         if request.method =='POST':
-            sub_code_id = request.POST.get('sub_code_id')
-            data1= student_request.objects.get(sub_code_id=sub_code_id, stud_id=id)
-            print(data1)
+            stud_id_id = request.POST.get('stud_id_id')
+            data1= student_request.objects.get(id=id)
+            print(data1, "hello")
+            data1.id = request.POST.get('id')
             data1.stud_id_id = request.POST.get('stud_id_id')
             data1.sub_code_id = request.POST.get('sub_code_id')
             data1.grades = request.POST.get('grades')
             data1.remarks = request.POST.get('remarks')
             data1.save()
-            return redirect('/checking/'+ str(id))
-        return render(request, 'Adding_App/editRemark.html', {'data':data, 'ids':ids, 'fil_data':fil_data})
+            return redirect('/checking/'+ str(stud_id_id))
+        return render(request, 'Adding_App/editRemark.html', {'data':data} )
     return redirect('/index')
 
 def deleteRemark(request,id):
-    data= student_request.objects.filter(stud_id=id)
+    data= student_request.objects.get(id=id)
     print(data)
+    print(data.stud_id_id)
     data.delete()
-    return redirect('/checking/'+ str(id))
+    return redirect('/checking/'+ str(data.stud_id_id))
 
 def picRequest(request):
     stud_id = request.POST.get('stud_id')

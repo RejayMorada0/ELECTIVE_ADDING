@@ -40,18 +40,23 @@
             <div class="form-row" id="FORMFORM">
                 <div class="col-md-4 mb-3">
                     <label for="ids">IDs</label>
-                    <select name="stud_id_id" class="custom-select" id="stud_id_id">
-                 
-                        {% for fil_data in fil_data %}
-                  <option  value="{{fil_data.id}}">{{fil_data.id}}</option>{% endfor %}
+                    <select name="id" class="custom-select" id="id">
+                    {% for data in data %}
+                  <option  value="{{data.id}}">{{data.id}}</option>{% endfor %}
                 </select>
                 </div>
 
+                <div class="col-md-4 mb-3">
+                    <label for="stud_id_id">Student ID</label>
+                    <select name="stud_id_id" class="custom-select" id="stud_id_id">
+                    {% for data in data %}
+                  <option  value="{{data.stud_id_id}}">{{data.stud_id_id}}</option>{% endfor %}
+                </select>
+                </div>
 
                 <div class="col-md-4 mb-3">
                     <label for="sub_code_id">Subject Code</label>
                     <select name="sub_code_id" class="custom-select" id="sub_code_id" required>
-                  <option selected disabled value="">Choose...</option>
                   {% for data in data %}
                   <option value="{{data.sub_code_id}}">{{data.subject}}</option>{% endfor %}
                 </select>
@@ -73,7 +78,8 @@
                 </select>
                 </div>
                 <div class="button1">
-                    <button id="logoutbutton">Update</button> {% for ids in ids %}<a class="nav-link" href="/checking/{{ids.id}}" id="logoutbutton">Cancel</a>{% endfor %}
+                    <button id="logoutbutton">Update</button> {% for data in data %}
+                    <a class="nav-link" href="/checking/{{data.stud_id_id}}" id="logoutbutton">Cancel</a>{% endfor %}
                 </div>
         </form>
 

@@ -80,7 +80,7 @@
                 <table>
                     <legend>ALL YEAR - ALL SEMESTER</legend>
                     <thead>
-
+                        <th>ID</th>
                         <th>SUBJECT CODE</th>
                         <th>GRADES</th>
                         <th>REMARKS</th>
@@ -92,14 +92,14 @@
                     <tbody id="allsub">
                         {% for studentReq in studentReq %}
                         <tr>
-
+                            <td>{{studentReq.id}}</td>
                             <td>{{studentReq.subject}}</td>
                             <td>{{studentReq.grades}}</td>
                             <td>{{studentReq.remarks}}</td>
                             {% if stud_stats != 'Waiting For Approval' and stud_stats != 'Approved' %}
                             <td>
-                                <a href="/editRemark/{{data.id}}">Edit</a>
-                                <a href="/deleteRemark/{{data.id}}">Delete</a>
+                                <a href="/editRemark/{{studentReq.id}}">Edit</a>
+                                <a href="/deleteRemark/{{studentReq.id}}">Delete</a>
                             </td>
                             {% endif %}
                         </tr>
