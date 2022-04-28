@@ -128,7 +128,7 @@
                     {% for data in data %}
                     <div class="imgforgrades">
                         <p>*Submitted picture of your grade is attached here.</p>
-                        <img src="{{data.image.url}}" alt="" id="viewimg">
+                        <img src="{{data.image.url}}" alt="" id="viewimg" onclick="window.open('{{data.image.url}}');" style="width:100%;">
 
                     </div> {% endfor %} {% endif %}
                 </div>
