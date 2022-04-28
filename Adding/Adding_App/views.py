@@ -19,7 +19,7 @@ import mysql.connector as sql
 installed_apps = ['Adding_App']
 
 
-#Login Page
+#LOGIN PAGE
 def index(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -42,7 +42,7 @@ def index(request):
             messages.info(request, 'Invalid Credentials')
     return render(request, 'Adding_App/index.html')
 
-#Sign Up
+#SIGN UP PAGE
 def userregistration(request):
     form = StudentRegistration()
     if request.method == 'POST':
@@ -58,7 +58,7 @@ def logoutUser(request):
     logout(request)
     return redirect('/index')
 
-#student
+#STUDENT USER INTERFACE
 @login_required(login_url='/index')
 def student(request):
     if request.user.is_authenticated and request.user.userType == 'STDNT':
@@ -77,37 +77,44 @@ def student(request):
         return render(request, 'Adding_App/student.html',context)
     return redirect('/index')
 
-#Head
+#HEAD USER INTERFACE
 @login_required(login_url='/index')
 def head(request):
-    data = all_subjects.objects.all()
-    context={
-    'data': data
-    }
-    print(context)
-    return render(request, 'Adding_App/head.html',context)
+    if request.user.is_authenticated and request.user.userType == 'DH':
+        data = all_subjects.objects.all()
+        context={
+        'data': data
+        }
+        print(context)
+        return render(request, 'Adding_App/head.html',context)
+    return redirect('/index')
 
 
 @login_required(login_url='/index')
 def requestapproval(request):
-    q = Q(stud_stats='Waiting For Approval') | Q(stud_stats='Approved')
-    students = registration.objects.filter(q)
-    context={'students': students}
-    return render(request, 'Adding_App/requestapproval.html', context)
+    if request.user.is_authenticated and request.user.userType == 'DH':
+        q = Q(stud_stats='Waiting For Approval') | Q(stud_stats='Approved')
+        students = registration.objects.filter(q)
+        context={'students': students}
+        return render(request, 'Adding_App/requestapproval.html', context)
+    return redirect('/index')
+
 
 @login_required(login_url='/index')
 def checking1(request,id):
-    data = registration.objects.get(id=id)
-    image = registration.objects.filter(username=data)
-    studentReq = student_request.objects.filter(stud_id=data.id)
-    offerSub = all_subjects.objects.filter(offer_stats='Offer')
-    subject = all_subjects.objects.all()
-    ids = registration.objects.filter(id=id)
-    stud_stats = data.stud_stats
-    print(stud_stats)
-    return render(request, 'Adding_App/checking1.html',  { 'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub, 'stud_stats':stud_stats } )
+    if request.user.is_authenticated and request.user.userType == 'DH':
+        data = registration.objects.get(id=id)
+        image = registration.objects.filter(username=data)
+        studentReq = student_request.objects.filter(stud_id=data.id)
+        offerSub = all_subjects.objects.filter(offer_stats='Offer')
+        subject = all_subjects.objects.all()
+        ids = registration.objects.filter(id=id)
+        stud_stats = data.stud_stats
+        print(stud_stats)
+        return render(request, 'Adding_App/checking1.html',  { 'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub, 'stud_stats':stud_stats } )
+    return redirect('/index')
 
-@login_required(login_url='/index')
+
 def adminApprove(request):
     stud_id = request.POST.get('stud_id')
     print(stud_id)
@@ -118,7 +125,6 @@ def adminApprove(request):
     return redirect('/requestapproval/')    
 
 #Add Subject
-@login_required(login_url='/index')
 def addAction(request):
     if request.method=='POST':
         sub_code = request.POST.get('sub_code')
@@ -133,42 +139,48 @@ def addAction(request):
 
 @login_required(login_url='/index')
 def edit(request,id):
-    data = all_subjects.objects.get(id=id)
-    if request.method =='POST':
-        data1 = all_subjects.objects.get(id=id)
-        data1.sub_code = request.POST.get('sub_code')
-        data1.sub_name = request.POST.get('sub_name')
-        data1.year = request.POST.get('year')
-        data1.semester = request.POST.get('semester')
-        data1.offer_stats = request.POST.get('offer_stats')
-        data1.save()
-        return redirect('/head') 
-    return render(request, 'Adding_App/edit.html', {'data':data})
+    if request.user.is_authenticated and request.user.userType == 'DH':
+        data = all_subjects.objects.get(id=id)
+        if request.method =='POST':
+            data1 = all_subjects.objects.get(id=id)
+            data1.sub_code = request.POST.get('sub_code')
+            data1.sub_name = request.POST.get('sub_name')
+            data1.year = request.POST.get('year')
+            data1.semester = request.POST.get('semester')
+            data1.offer_stats = request.POST.get('offer_stats')
+            data1.save()
+            return redirect('/head') 
+        return render(request, 'Adding_App/edit.html', {'data':data})
+    return redirect('/index')
+
 
 def delete(request,id):
     data = all_subjects.objects.get(id=id)
     data.delete()
-    return redirect("/head/")
+    return redirect('/head')
     
-#pic
+#PIC USER INTERFACE
 @login_required(login_url='/index')
 def pic(request):
-    # q = Q(stud_stats='Processing') | Q(stud_stats='Requested')
-    students = registration.objects.filter(stud_stats='Requested')
-    return render(request, 'Adding_App/pic.html', {'students': students})
+    if request.user.is_authenticated and request.user.userType == 'PIC':
+        students = registration.objects.filter(stud_stats='Requested')
+        return render(request, 'Adding_App/pic.html', {'students': students})
+    return redirect('/index')
 
 
 @login_required(login_url='/index')
 def checking(request,id):
-    data = registration.objects.get(id=id)
-    image = registration.objects.filter(username=data)
-    studentReq = student_request.objects.filter(stud_id=data.id)
-    offerSub = all_subjects.objects.filter(offer_stats='Offer')
-    subject = all_subjects.objects.all()
-    ids = registration.objects.filter(id=id)
-    stud_stats = data.stud_stats
-    print(stud_stats)
-    return render(request, 'Adding_App/checking.html',  { 'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub, 'stud_stats':stud_stats } )
+    if request.user.is_authenticated and request.user.userType == 'PIC':
+        data = registration.objects.get(id=id)
+        image = registration.objects.filter(username=data)
+        studentReq = student_request.objects.filter(stud_id=data.id)
+        offerSub = all_subjects.objects.filter(offer_stats='Offer')
+        subject = all_subjects.objects.all()
+        ids = registration.objects.filter(id=id)
+        stud_stats = data.stud_stats
+        print(stud_stats)
+        return render(request, 'Adding_App/checking.html',  { 'subject':subject, 'ids':ids, 'data':data, 'image':image, 'studentReq':studentReq , 'offerSub':offerSub, 'stud_stats':stud_stats } )
+    return redirect('/index')
 
 
 @login_required(login_url='/index')
@@ -186,23 +198,24 @@ def addRemark(request,id):
 
 @login_required(login_url='/index')   
 def editRemark(request, id):
-    ids = registration.objects.filter(id=id)
-    data= student_request.objects.filter(stud_id=id)
-    print(ids)
-    fil_data = registration.objects.filter(id=id)
-    print(fil_data)
-    if request.method =='POST':
-        sub_code_id = request.POST.get('sub_code_id')
-        data1= student_request.objects.get(sub_code_id=sub_code_id, stud_id=id)
-        print(data1)
-        data1.stud_id_id = request.POST.get('stud_id_id')
-        data1.sub_code_id = request.POST.get('sub_code_id')
-        data1.grades = request.POST.get('grades')
-        data1.remarks = request.POST.get('remarks')
-        data1.save()
-        return redirect('/checking/'+ str(id))
-    return render(request, 'Adding_App/editRemark.html', {'data':data, 'ids':ids, 'fil_data':fil_data})
-
+    if request.user.is_authenticated and request.user.userType == 'PIC':
+        ids = registration.objects.filter(id=id)
+        data= student_request.objects.filter(stud_id=id)
+        print(ids)
+        fil_data = registration.objects.filter(id=id)
+        print(fil_data)
+        if request.method =='POST':
+            sub_code_id = request.POST.get('sub_code_id')
+            data1= student_request.objects.get(sub_code_id=sub_code_id, stud_id=id)
+            print(data1)
+            data1.stud_id_id = request.POST.get('stud_id_id')
+            data1.sub_code_id = request.POST.get('sub_code_id')
+            data1.grades = request.POST.get('grades')
+            data1.remarks = request.POST.get('remarks')
+            data1.save()
+            return redirect('/checking/'+ str(id))
+        return render(request, 'Adding_App/editRemark.html', {'data':data, 'ids':ids, 'fil_data':fil_data})
+    return redirect('/index')
 
 def deleteRemark(request,id):
     data= student_request.objects.filter(stud_id=id)
@@ -221,12 +234,13 @@ def picRequest(request):
 
 @login_required(login_url='/index')
 def studentrecords(request):
-    q = Q(stud_stats='Waiting For Approval') | Q(stud_stats='Approved')
-    students = registration.objects.filter(q)
-    # students = registration.objects.filter(stud_stats='Processing''Requested')
-    context={'students': students}
-    print(context)
-    return render(request, 'Adding_App/studentrecords.html', context)
+    if request.user.is_authenticated and request.user.userType == 'PIC':
+        q = Q(stud_stats='Waiting For Approval') | Q(stud_stats='Approved')
+        students = registration.objects.filter(q)
+        context={'students': students}
+        print(context)
+        return render(request, 'Adding_App/studentrecords.html', context)
+    return redirect('/index')
 
 
 
