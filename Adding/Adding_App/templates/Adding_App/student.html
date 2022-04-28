@@ -95,14 +95,15 @@
     <section>
         <div class="subject">
             <p>REQUEST FOR ADDING OF SUBJECT</p>
-
         </div>
+
         {% if stud_stats == 'Approved'%}
-        <form method="post" id="formnirequestnew">
-            {% csrf_token %}
-            <input type="submit" value="Request New" id="editGrade" onclick="shabu()" name="editAction">
+        <form method="post" action='/studentRequestNew/' id="formnirequestnew">
+            {% csrf_token %} {% for data in data%}<input type="text" name="stud_id" id="stud_id" value="{{data.stud_id}}" hidden>{% endfor %}
+            <input type="submit" value="Request New" id="editGrade">
         </form>
         {% endif %}
+
 
 
         <div class="imagecontainer">
@@ -112,14 +113,12 @@
                 {% csrf_token %}
                 <div class="imgforgrades">
                     <img src="../../static/images/icons8-add-image-96 (1).png" alt="" id="viewimg">
-                    <input type="file" name="file" id="file" onchange="readURL(this);" required>
+                    <input type="file" name="image" id="image" onchange="readURL(this);" required>
                 </div>
 
                 <div class="submitbutton">
                     <input type="submit" value="SUBMIT REQUEST" id="submitbtn" name="submitAction">
                 </div>
-
-
             </form>
             {% endif %} {% if stud_stats != 'Processing' %}
             <div>
@@ -175,15 +174,6 @@
             //trancfer js var in php var
         document.cookie = "id = " + id;
 
-        //new edit
-        function shabu() {
-            var x = document.getElementsByClassName("imagecontainer");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        };
 
         $("input").change(function(e) {
 

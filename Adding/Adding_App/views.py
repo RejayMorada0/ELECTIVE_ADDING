@@ -70,12 +70,21 @@ def student(request):
         print(context)
         if request.method == 'POST':
             data = registration.objects.get(username=username)
-            data.image = request.FILES["file"]
+            data.image = request.FILES["image"]
             data.stud_stats = 'Requested'
             data.save()
             return redirect('/student') 
         return render(request, 'Adding_App/student.html',context)
     return redirect('/index')
+
+def studentRequestNew(request):
+    if request.method == 'POST':
+        stud_id = request.POST.get('stud_id')
+        data = registration.objects.get(stud_id=stud_id)
+        data.stud_stats = 'Processing'
+        data.image = ''
+        data.save()
+        return redirect('/student')
 
 #HEAD USER INTERFACE
 @login_required(login_url='/index')
