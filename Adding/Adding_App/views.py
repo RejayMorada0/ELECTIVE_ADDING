@@ -61,19 +61,21 @@ def logoutUser(request):
 #student
 @login_required(login_url='/index')
 def student(request):
-    data = registration.objects.filter(id = request.user.pk)
-    current_user = request.user
-    username = current_user.username
-    stud_stats = current_user.stud_stats
-    context = { 'data': data, 'stud_stats': stud_stats }
-    print(context)
-    if request.method == 'POST':
-        data = registration.objects.get(username=username)
-        data.image = request.FILES["file"]
-        data.stud_stats = 'Requested'
-        data.save()
-        return redirect('/student') 
-    return render(request, 'Adding_App/student.html',context)
+    if request.user.is_authenticated and request.user.userType == 'STDNT':
+        data = registration.objects.filter(id = request.user.pk)
+        current_user = request.user
+        username = current_user.username
+        stud_stats = current_user.stud_stats
+        context = { 'data': data, 'stud_stats': stud_stats }
+        print(context)
+        if request.method == 'POST':
+            data = registration.objects.get(username=username)
+            data.image = request.FILES["file"]
+            data.stud_stats = 'Requested'
+            data.save()
+            return redirect('/student') 
+        return render(request, 'Adding_App/student.html',context)
+    return redirect('/index')
 
 #Head
 @login_required(login_url='/index')
