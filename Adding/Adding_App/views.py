@@ -17,6 +17,7 @@ import mysql.connector as sql
 import io
 from reportlab.pdfgen import canvas
 
+
 # Create your views here.
 installed_apps = ['Adding_App']
 
@@ -106,7 +107,7 @@ def exportPDF(request):
     # FileResponse sets the Content-Disposition header so that browsers
     # present the option to save the file.
     buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename='hello.pdf')  
+    return FileResponse(buffer, as_attachment=True, filename='Student Request.pdf')  
 
 #HEAD USER INTERFACE
 @login_required(login_url='/index')
