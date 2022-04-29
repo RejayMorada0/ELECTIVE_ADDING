@@ -76,11 +76,11 @@
                     <label id='status1'>{{data.stud_stats}}</label> {% endfor %}
                 </div>
                 {% if stud_stats == 'Approved' %}
-                <form class="form-inline" target="_blank" method="post">
-                    <div class="statusCenter">
-                        <button id="pdf" href="{% url 'exportPDF' %}"> <i class="bi bi-download"></i> Download PDF</button>
-                    </div>
-                </form>
+
+                <div class="statusCenter">
+                    <a id="pdf" href="{% url 'Adding_App:exportPDF' %}"> <i class="bi bi-download"></i> Download PDF</a>
+                </div>
+
                 {% endif %}
             </div>
             <ul class="navbar-nav mr-auto">

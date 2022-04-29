@@ -139,9 +139,8 @@
                         <form class="needs-validation" onsubmit="msg()" action="/addRemark/{{data.id}}" method="post">
                             {% csrf_token %}
                             <div class="form-row">
-
                                 <div class="col-md-4 mb-3">
-                                    <label for="ids">IDs</label>
+                                    <label for="stud_id_id">Student ID</label>
                                     <select name="stud_id_id" class="custom-select" id="stud_id_id">
                                   {% for ids in ids %}
                                   <option value="{{ids.id}}">{{ids.id}}</option>{% endfor %}

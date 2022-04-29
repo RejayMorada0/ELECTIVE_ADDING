@@ -31,7 +31,7 @@ urlpatterns = [
     #student
     path('student/', views.student, name='student'),
     path('studentRequestNew/', views.studentRequestNew, name='studentRequestNew'),
-   
+    path('exportPDF/', views.exportPDF, name='exportPDF'),
 ]
 
     

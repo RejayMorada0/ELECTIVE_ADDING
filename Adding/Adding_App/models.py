@@ -44,7 +44,8 @@ class all_subjects(models.Model):
 #foreign key (https://docs.djangoproject.com/en/4.0/topics/db/examples/many_to_one/)
 #https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.ForeignKey.related_name
 #https://stackoverflow.com/questions/2606194/django-error-message-add-a-related-name-argument-to-the-definition
-class student_request(models.Model): 
+class student_request(models.Model):
+    stud_id = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='stud_id', verbose_name = 'stud_id') 
     sub_code = models.ForeignKey(all_subjects, on_delete=models.CASCADE, related_name='subject', verbose_name = 'sub_code')
     subject = models.CharField(max_length=100)
     grades = models.PositiveIntegerField()

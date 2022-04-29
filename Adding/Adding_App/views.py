@@ -204,7 +204,8 @@ def checking(request,id):
     if request.user.is_authenticated and request.user.userType == 'PIC':
         data = registration.objects.get(id=id)
         image = registration.objects.filter(username=data)
-        studentReq = student_request.objects.filter(id=data.id)
+        studentReq = student_request.objects.filter(stud_id_id=data.id)
+        print(studentReq,'hello')
         offerSub = all_subjects.objects.filter(offer_stats='Offer')
         subject = all_subjects.objects.all()
         ids = registration.objects.filter(id=id)

@@ -286,6 +286,10 @@ tr {
     justify-self: center;
 }
 
+#pdf {
+    color: #E2435E;
+}
+
 #viewimg {
     width: auto;
     height: 300px;
